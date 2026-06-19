@@ -1,0 +1,2 @@
+global_samples,elite_training_examples,stage1_candidates,stage1_top_candidates,stage2_candidates,final_generated_candidates,mean_predicted_permeability,mean_positive_prob,mean_multiobjective_score,mean_motif_score,mean_composition_alignment,mean_natural_ratio,mean_n_methyl_ratio
+24000,390,23577,400,16124,120,-4.831977915967229,0.962450332592341,0.6439514043833451,0.1405424625239406,0.6845759179092511,0.33055555555555555,0.41388888888888886

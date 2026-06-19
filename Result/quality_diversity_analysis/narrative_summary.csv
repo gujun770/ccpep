@@ -1,0 +1,4 @@
+finding,summary
+optimized_tradeoff,Optimized shortlist keeps mean quality 0.985 with mean local diversity 1.000.
+denovo_tradeoff,De novo shortlist keeps mean quality 0.691 with mean local diversity 0.705.
+tradeoff_contrast,"The optimized route concentrates more strongly on high-confidence local improvements, whereas the de novo route expands into a broader diversity region while maintaining competitive quality."

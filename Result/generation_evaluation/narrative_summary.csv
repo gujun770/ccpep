@@ -1,0 +1,4 @@
+finding,summary
+optimized_vs_train,Optimized shortlist keeps novelty 1.00 with mean predicted permeability -4.511.
+denovo_vs_train,De novo shortlist keeps novelty 1.00 with mean predicted permeability -4.725.
+diversity_compare,Pairwise Jaccard diversity is 0.554 for optimized candidates and 0.705 for de novo candidates.

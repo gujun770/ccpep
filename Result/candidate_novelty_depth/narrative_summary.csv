@@ -1,0 +1,4 @@
+finding,summary
+optimized_neighbor_similarity,Optimized candidates have mean nearest-train token Jaccard 0.928.
+denovo_neighbor_similarity,"De novo candidates have mean nearest-train token Jaccard 0.774, supporting novelty beyond exact duplication."
+descriptor_distance_compare,Mean nearest-descriptor distance is 0.288 for optimized candidates and 0.689 for de novo candidates.

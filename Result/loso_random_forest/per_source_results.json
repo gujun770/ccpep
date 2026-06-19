@@ -1,0 +1,342 @@
+[
+  {
+    "source": "2020_Townsend",
+    "test_samples": 1063,
+    "num_classes": 2,
+    "permeability_std": 0.9975117114303722,
+    "is_valid_for_strict_summary": true,
+    "regression": {
+      "rmse": 0.9951394197573574,
+      "mae": 0.5301119174324094,
+      "r2": 0.004750762808599318
+    },
+    "classification": {
+      "accuracy": 0.7732831608654751,
+      "balanced_accuracy": 0.4938097489232062,
+      "f1": 0.8720127456186936,
+      "mcc": -0.043084658050028736,
+      "pr_auc": 0.893110076279022,
+      "auroc": 0.6573116924046645
+    }
+  },
+  {
+    "source": "2016_Furukawa",
+    "test_samples": 688,
+    "num_classes": 2,
+    "permeability_std": 1.0867564688364184,
+    "is_valid_for_strict_summary": true,
+    "regression": {
+      "rmse": 0.8875230289882883,
+      "mae": 0.6586043724797342,
+      "r2": 0.33304767093366916
+    },
+    "classification": {
+      "accuracy": 0.5959302325581395,
+      "balanced_accuracy": 0.5293690327936903,
+      "f1": 0.734225621414914,
+      "mcc": 0.12708964948752483,
+      "pr_auc": 0.8171600317141327,
+      "auroc": 0.7660768645357686
+    }
+  },
+  {
+    "source": "2018_Naylor",
+    "test_samples": 63,
+    "num_classes": 2,
+    "permeability_std": 0.6090432546765618,
+    "is_valid_for_strict_summary": true,
+    "regression": {
+      "rmse": 0.7062026963186249,
+      "mae": 0.6001899054927539,
+      "r2": -0.34450514207973004
+    },
+    "classification": {
+      "accuracy": 0.7619047619047619,
+      "balanced_accuracy": 0.7840909090909092,
+      "f1": 0.8387096774193549,
+      "mcc": 0.45246196555749746,
+      "pr_auc": 0.9661175356930916,
+      "auroc": 0.8321678321678322
+    }
+  },
+  {
+    "source": "2015_Wang",
+    "test_samples": 62,
+    "num_classes": 2,
+    "permeability_std": 1.342904620581517,
+    "is_valid_for_strict_summary": true,
+    "regression": {
+      "rmse": 1.393112851509331,
+      "mae": 0.9367843388010351,
+      "r2": -0.0761734190906096
+    },
+    "classification": {
+      "accuracy": 0.6612903225806451,
+      "balanced_accuracy": 0.7053571428571428,
+      "f1": 0.5116279069767442,
+      "mcc": 0.3441664059757128,
+      "pr_auc": 0.5983870135019895,
+      "auroc": 0.7708333333333333
+    }
+  },
+  {
+    "source": "2022_Taechalertpaisarn",
+    "test_samples": 52,
+    "num_classes": 2,
+    "permeability_std": 0.7399528211411813,
+    "is_valid_for_strict_summary": true,
+    "regression": {
+      "rmse": 0.6576462753649079,
+      "mae": 0.4998024732779531,
+      "r2": 0.2100917150093501
+    },
+    "classification": {
+      "accuracy": 0.6730769230769231,
+      "balanced_accuracy": 0.6730769230769231,
+      "f1": 0.5142857142857142,
+      "mcc": 0.457495710997814,
+      "pr_auc": 0.8748374190868585,
+      "auroc": 0.8609467455621302
+    }
+  },
+  {
+    "source": "2023_Ghosh",
+    "test_samples": 19,
+    "num_classes": 1,
+    "permeability_std": 0.2796475819368058,
+    "is_valid_for_strict_summary": false,
+    "regression": {
+      "rmse": 1.0344402286185381,
+      "mae": 0.8723589146587217,
+      "r2": -12.683231239088624
+    },
+    "classification": {
+      "accuracy": 0.5789473684210527,
+      "balanced_accuracy": 0.5789473684210527,
+      "f1": 0.7333333333333333,
+      "mcc": 0.0,
+      "pr_auc": 0.9999999999999998,
+      "auroc": NaN
+    }
+  },
+  {
+    "source": "2021_Golosov",
+    "test_samples": 19,
+    "num_classes": 2,
+    "permeability_std": 0.7455128930368747,
+    "is_valid_for_strict_summary": true,
+    "regression": {
+      "rmse": 0.9103320744244414,
+      "mae": 0.7889426358366681,
+      "r2": -0.4910402678780519
+    },
+    "classification": {
+      "accuracy": 0.5789473684210527,
+      "balanced_accuracy": 0.7647058823529411,
+      "f1": 0.6923076923076923,
+      "mcc": 0.32539568672798425,
+      "pr_auc": 0.9932718185313341,
+      "auroc": 0.9411764705882353
+    }
+  },
+  {
+    "source": "2015_Hewitt",
+    "test_samples": 18,
+    "num_classes": 2,
+    "permeability_std": 0.8017775391105829,
+    "is_valid_for_strict_summary": true,
+    "regression": {
+      "rmse": 0.8282301937354921,
+      "mae": 0.7228506565944554,
+      "r2": -0.06707352867428806
+    },
+    "classification": {
+      "accuracy": 0.5,
+      "balanced_accuracy": 0.5,
+      "f1": 0.6666666666666666,
+      "mcc": 0.0,
+      "pr_auc": 0.6167789001122335,
+      "auroc": 0.5308641975308642
+    }
+  },
+  {
+    "source": "2015_Bockus_2",
+    "test_samples": 17,
+    "num_classes": 2,
+    "permeability_std": 0.47306919543320514,
+    "is_valid_for_strict_summary": true,
+    "regression": {
+      "rmse": 0.7183949355886315,
+      "mae": 0.6089103606454535,
+      "r2": -1.3060949543659515
+    },
+    "classification": {
+      "accuracy": 0.5882352941176471,
+      "balanced_accuracy": 0.55,
+      "f1": 0.72,
+      "mcc": 0.06546536707079773,
+      "pr_auc": 0.94747520997521,
+      "auroc": 0.7
+    }
+  },
+  {
+    "source": "2012_Rand",
+    "test_samples": 16,
+    "num_classes": 2,
+    "permeability_std": 0.5146293417353892,
+    "is_valid_for_strict_summary": true,
+    "regression": {
+      "rmse": 0.43964120560421543,
+      "mae": 0.316993529982057,
+      "r2": 0.2701935584820514
+    },
+    "classification": {
+      "accuracy": 0.5625,
+      "balanced_accuracy": 0.5158730158730158,
+      "f1": 0.6956521739130435,
+      "mcc": 0.047619047619047616,
+      "pr_auc": 0.7963684463684464,
+      "auroc": 0.6984126984126985
+    }
+  },
+  {
+    "source": "2015_Bockus_1",
+    "test_samples": 15,
+    "num_classes": 1,
+    "permeability_std": 0.3320682660739103,
+    "is_valid_for_strict_summary": false,
+    "regression": {
+      "rmse": 0.4141531689342369,
+      "mae": 0.3343675318894191,
+      "r2": -0.5554900184240164
+    },
+    "classification": {
+      "accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "f1": 1.0,
+      "mcc": 0.0,
+      "pr_auc": 1.0,
+      "auroc": NaN
+    }
+  },
+  {
+    "source": "2015_Ahlbach",
+    "test_samples": 14,
+    "num_classes": 2,
+    "permeability_std": 0.7464377989860254,
+    "is_valid_for_strict_summary": true,
+    "regression": {
+      "rmse": 0.7120371783918484,
+      "mae": 0.43299425441323536,
+      "r2": 0.09004881719189084
+    },
+    "classification": {
+      "accuracy": 0.8571428571428571,
+      "balanced_accuracy": 0.9,
+      "f1": 0.8888888888888888,
+      "mcc": 0.7302967433402214,
+      "pr_auc": 0.9909090909090909,
+      "auroc": 0.975
+    }
+  },
+  {
+    "source": "2017_Boehm",
+    "test_samples": 14,
+    "num_classes": 2,
+    "permeability_std": 0.33557747972407087,
+    "is_valid_for_strict_summary": true,
+    "regression": {
+      "rmse": 2.002276066196257,
+      "mae": 1.988442730073306,
+      "r2": -34.60100812211952
+    },
+    "classification": {
+      "accuracy": 0.14285714285714285,
+      "balanced_accuracy": 0.5,
+      "f1": 0.0,
+      "mcc": 0.0,
+      "pr_auc": 0.8006384818884819,
+      "auroc": 0.375
+    }
+  },
+  {
+    "source": "2015_Schwochert",
+    "test_samples": 13,
+    "num_classes": 2,
+    "permeability_std": 0.42005212412538584,
+    "is_valid_for_strict_summary": true,
+    "regression": {
+      "rmse": 0.3971889485287537,
+      "mae": 0.3458598870894557,
+      "r2": 0.10589619769808845
+    },
+    "classification": {
+      "accuracy": 0.9230769230769231,
+      "balanced_accuracy": 0.5,
+      "f1": 0.96,
+      "mcc": 0.0,
+      "pr_auc": 0.8877666315166315,
+      "auroc": 0.16666666666666666
+    }
+  },
+  {
+    "source": "2020_Hosono",
+    "test_samples": 11,
+    "num_classes": 2,
+    "permeability_std": 0.3958482888286812,
+    "is_valid_for_strict_summary": true,
+    "regression": {
+      "rmse": 0.33628449634846513,
+      "mae": 0.30645338186113913,
+      "r2": 0.2783009271734874
+    },
+    "classification": {
+      "accuracy": 0.8181818181818182,
+      "balanced_accuracy": 0.8166666666666667,
+      "f1": 0.8333333333333334,
+      "mcc": 0.6333333333333333,
+      "pr_auc": 0.9055555555555554,
+      "auroc": 0.8333333333333334
+    }
+  },
+  {
+    "source": "2015_Marelli",
+    "test_samples": 10,
+    "num_classes": 2,
+    "permeability_std": 1.869652374105946,
+    "is_valid_for_strict_summary": true,
+    "regression": {
+      "rmse": 1.5799204120034969,
+      "mae": 1.2296388421329243,
+      "r2": 0.285917007590886
+    },
+    "classification": {
+      "accuracy": 0.8,
+      "balanced_accuracy": 0.875,
+      "f1": 0.6666666666666666,
+      "mcc": 0.6123724356957946,
+      "pr_auc": 0.8333333333333333,
+      "auroc": 0.9375
+    }
+  },
+  {
+    "source": "2022_Bhardwaj",
+    "test_samples": 10,
+    "num_classes": 2,
+    "permeability_std": 0.4340518402218795,
+    "is_valid_for_strict_summary": true,
+    "regression": {
+      "rmse": 0.8502001734904976,
+      "mae": 0.7768818665451003,
+      "r2": -2.836711774371008
+    },
+    "classification": {
+      "accuracy": 0.9,
+      "balanced_accuracy": 0.9444444444444444,
+      "f1": 0.9411764705882353,
+      "mcc": 0.6666666666666666,
+      "pr_auc": 1.0,
+      "auroc": 1.0
+    }
+  }
+]

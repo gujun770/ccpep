@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="white"/>
+  <text x="800" y="72" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#24323A">Descriptor-guided source-aware design of membrane-permeable cyclic peptides</text>
+  <text x="800" y="112" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5C6F7A">public data | robust prediction | dual-route generation | uncertainty-aware filtering</text>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#5C6F7A"/></marker></defs>
+
+  <rect x="72" y="250" width="235" height="282" rx="20" fill="white" stroke="#2F80ED" stroke-width="4"/>
+  <rect x="72" y="250" width="235" height="58" rx="20" fill="#2F80ED"/>
+  <text x="189.5" y="276" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="white">Public</text>
+  <text x="189.5" y="298" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="white">CycPeptMPDB</text>
+  <text x="189.5" y="470" text-anchor="middle" font-family="Arial" font-size="17" fill="#5C6F7A">2168 length-6</text>
+  <text x="189.5" y="493" text-anchor="middle" font-family="Arial" font-size="17" fill="#5C6F7A">cyclic peptides</text>
+  
+<line x1="322" y1="391" x2="348" y2="391" stroke="#5C6F7A" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="366" y="250" width="235" height="282" rx="20" fill="white" stroke="#00A6A6" stroke-width="4"/>
+  <rect x="366" y="250" width="235" height="58" rx="20" fill="#00A6A6"/>
+  <text x="483.5" y="276" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="white">Source-aware</text>
+  <text x="483.5" y="298" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="white">predictor</text>
+  <text x="483.5" y="470" text-anchor="middle" font-family="Arial" font-size="17" fill="#5C6F7A">HELM tokens +</text>
+  <text x="483.5" y="493" text-anchor="middle" font-family="Arial" font-size="17" fill="#5C6F7A">descriptors</text>
+  
+<line x1="616" y1="391" x2="642" y2="391" stroke="#5C6F7A" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="660" y="250" width="235" height="282" rx="20" fill="white" stroke="#F2994A" stroke-width="4"/>
+  <rect x="660" y="250" width="235" height="58" rx="20" fill="#F2994A"/>
+  <text x="777.5" y="276" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="white">Dual-route</text>
+  <text x="777.5" y="298" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="white">design</text>
+  <text x="777.5" y="470" text-anchor="middle" font-family="Arial" font-size="17" fill="#5C6F7A">optimization +</text>
+  <text x="777.5" y="493" text-anchor="middle" font-family="Arial" font-size="17" fill="#5C6F7A">de novo</text>
+  
+<line x1="910" y1="391" x2="936" y2="391" stroke="#5C6F7A" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="954" y="250" width="235" height="282" rx="20" fill="white" stroke="#7B61FF" stroke-width="4"/>
+  <rect x="954" y="250" width="235" height="58" rx="20" fill="#7B61FF"/>
+  <text x="1071.5" y="276" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="white">Safety</text>
+  <text x="1071.5" y="298" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="white">filters</text>
+  <text x="1071.5" y="470" text-anchor="middle" font-family="Arial" font-size="17" fill="#5C6F7A">uncertainty diversity</text>
+  <text x="1071.5" y="493" text-anchor="middle" font-family="Arial" font-size="17" fill="#5C6F7A">novelty 3D proxy</text>
+  
+<line x1="1204" y1="391" x2="1230" y2="391" stroke="#5C6F7A" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="1248" y="250" width="235" height="282" rx="20" fill="white" stroke="#27AE60" stroke-width="4"/>
+  <rect x="1248" y="250" width="235" height="58" rx="20" fill="#27AE60"/>
+  <text x="1365.5" y="276" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="white">Validated</text>
+  <text x="1365.5" y="298" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="white">shortlist</text>
+  <text x="1365.5" y="470" text-anchor="middle" font-family="Arial" font-size="17" fill="#5C6F7A">optimized and</text>
+  <text x="1365.5" y="493" text-anchor="middle" font-family="Arial" font-size="17" fill="#5C6F7A">de novo candidates</text>
+  
+<rect x="162" y="648" width="1276" height="82" rx="18" fill="#F6FAFC" stroke="#C9D3DA" stroke-width="2"/>
+<text x="800" y="696" text-anchor="middle" font-family="Arial" font-size="20" fill="#24323A">Output: prioritized candidate shortlists with calibration, novelty depth, and mechanistic proxy analysis</text>
+</svg>

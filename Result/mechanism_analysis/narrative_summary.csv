@@ -1,0 +1,4 @@
+finding,summary
+optimized_profile,"Optimized shortlist shows mean MolLogP 0.777, TPSA 25.193, and n-methyl ratio 0.278."
+denovo_profile,"De novo shortlist shows mean MolLogP 0.788, TPSA 22.630, and n-methyl ratio 0.451."
+top_shifts,"The strongest descriptor shifts toward the high-permeability reference set are observed in de_novo_shortlist:n_methyl_ratio, de_novo_shortlist:d_ratio, de_novo_shortlist:MolLogP_mean, optimized_shortlist:TPSA_mean."

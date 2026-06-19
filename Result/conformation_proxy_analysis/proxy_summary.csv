@@ -1,0 +1,5 @@
+group,count,CHCl3_3DPSA_mean,H2O_3DPSA_mean,EPSA_mean,PC1_mean,PC2_mean,_3DPSA_mean,solvent_3DPSA_gap_mean
+overall_train,2168,123.37180083759888,122.97859469520708,74.26086956521739,4.1272738888717715,0.4841026613791513,,-0.3932061423918101
+train_top100,100,105.35,105.17,66.5,3.91074153921,-0.18861550574000002,,-0.18
+optimized_shortlist_overlap,0,,,,,,,
+de_novo_shortlist_overlap,0,,,,,,,

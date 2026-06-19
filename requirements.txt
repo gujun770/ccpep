@@ -1,0 +1,13 @@
+﻿scikit-learn==1.3.0
+torch==2.2.1
+pytorch-lightning==2.4.0
+transformers==4.46.2
+tokenizers==0.20.3
+tqdm==4.65.0
+numpy
+pandas
+matplotlib
+seaborn
+rdkit
+python-docx
+xgboost==3.2.0

@@ -1,0 +1,39 @@
+{
+  "num_samples": 2168,
+  "num_numeric_features": 46,
+  "threshold": -6.0,
+  "random_split": {
+    "train_samples": 1734,
+    "test_samples": 434,
+    "regression": {
+      "rmse": 0.8771753360944081,
+      "mae": 0.5595781903360517,
+      "r2": 0.37641420113405644
+    },
+    "classification": {
+      "accuracy": 0.7511520737327189,
+      "precision": 0.841726618705036,
+      "recall": 0.785234899328859,
+      "f1": 0.8125,
+      "auroc": 0.8390248716936438
+    }
+  },
+  "source_split": {
+    "train_samples": 1063,
+    "test_samples": 1105,
+    "num_train_sources": 23,
+    "num_test_sources": 6,
+    "regression": {
+      "rmse": 1.340043240305158,
+      "mae": 0.955275306335273,
+      "r2": -0.7706780643161308
+    },
+    "classification": {
+      "accuracy": 0.7583710407239819,
+      "precision": 0.7932405566600398,
+      "recall": 0.9311551925320887,
+      "f1": 0.856682769726248,
+      "auroc": 0.6629606278465766
+    }
+  }
+}

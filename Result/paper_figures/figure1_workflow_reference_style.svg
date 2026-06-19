@@ -1,0 +1,369 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1000" viewBox="0 0 2200 1000">
+<defs>
+  <marker id="1769C2" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L0,12 L12,6 z" fill="#1769C2"/></marker>
+  <marker id="008C87" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L0,12 L12,6 z" fill="#008C87"/></marker>
+  <marker id="E26A16" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L0,12 L12,6 z" fill="#E26A16"/></marker>
+  <linearGradient id="polarity" x1="0" x2="1"><stop offset="0" stop-color="#2F80ED"/><stop offset="0.5" stop-color="#FFFFFF"/><stop offset="1" stop-color="#D84A4A"/></linearGradient>
+  <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0F172A" flood-opacity="0.12"/></filter>
+</defs>
+<style>
+  .title { font-family: Arial, Helvetica, sans-serif; font-size: 30px; font-weight: 700; }
+  .num { font-family: Arial, Helvetica, sans-serif; font-size: 30px; font-weight: 700; fill: white; }
+  .subhead { font-family: Arial, Helvetica, sans-serif; font-size: 20px; font-weight: 700; }
+  .text { font-family: Arial, Helvetica, sans-serif; font-size: 20px; fill: #111827; }
+  .tiny { font-family: Arial, Helvetica, sans-serif; font-size: 14px; fill: #111827; }
+  .filterTitle { font-family: Arial, Helvetica, sans-serif; font-size: 24px; font-weight: 700; fill: #111827; }
+  .filterDesc { font-family: Arial, Helvetica, sans-serif; font-size: 18px; fill: #4B5563; }
+  .route { font-family: Arial, Helvetica, sans-serif; font-size: 26px; font-weight: 700; fill: #008C87; }
+</style>
+<rect width="2200" height="1000" fill="white"/>
+<g filter="url(#shadow)">
+
+  <rect x="26" y="34" width="424" height="900" rx="18" fill="#F7FBFF" stroke="#0B4FA3" stroke-width="2.2"/>
+  <circle cx="64" cy="74" r="24" fill="#0B4FA3"/>
+  <text x="64" y="83" text-anchor="middle" class="num">1</text>
+  <text x="102" y="82" class="title" fill="#0B4FA3">Public CycPeptMPDB data</text>
+  
+
+  <rect x="478" y="34" width="402" height="900" rx="18" fill="#F7FBFF" stroke="#1769C2" stroke-width="2.2"/>
+  <circle cx="516" cy="74" r="24" fill="#1769C2"/>
+  <text x="516" y="83" text-anchor="middle" class="num">2</text>
+  <text x="554" y="82" class="title" fill="#1769C2">Source-aware predictor</text>
+  
+
+  <rect x="926" y="34" width="500" height="900" rx="18" fill="#F6FFFD" stroke="#008C87" stroke-width="2.2"/>
+  <circle cx="964" cy="74" r="24" fill="#008C87"/>
+  <text x="964" y="83" text-anchor="middle" class="num">3</text>
+  <text x="1002" y="82" class="title" fill="#008C87">Dual-route design</text>
+  
+
+  <rect x="1460" y="34" width="382" height="900" rx="18" fill="#FFF9F4" stroke="#E26A16" stroke-width="2.2"/>
+  <circle cx="1498" cy="74" r="24" fill="#E26A16"/>
+  <text x="1498" y="83" text-anchor="middle" class="num">4</text>
+  <text x="1536" y="82" class="title" fill="#E26A16">Safety filters</text>
+  
+
+  <rect x="1876" y="34" width="298" height="900" rx="18" fill="#F7FBFF" stroke="#0B4FA3" stroke-width="2.2"/>
+  <circle cx="1914" cy="74" r="24" fill="#0B4FA3"/>
+  <text x="1914" y="83" text-anchor="middle" class="num">5</text>
+  <text x="1952" y="82" class="title" fill="#0B4FA3">Validated shortlist</text>
+  
+</g>
+<path d="M450,480 C464.0,480 464.0,480 478,480" fill="none" stroke="#1769C2" stroke-width="8" stroke-linecap="round" marker-end="url(#1769C2)"/>
+<path d="M880,480 C903.0,480 903.0,480 926,480" fill="none" stroke="#1769C2" stroke-width="8" stroke-linecap="round" marker-end="url(#1769C2)"/>
+<path d="M1426,480 C1443.0,480 1443.0,480 1460,480" fill="none" stroke="#008C87" stroke-width="8" stroke-linecap="round" marker-end="url(#008C87)"/>
+<path d="M1842,480 C1859.0,480 1859.0,480 1876,480" fill="none" stroke="#E26A16" stroke-width="8" stroke-linecap="round" marker-end="url(#E26A16)"/>
+
+<!-- Panel 1 -->
+
+  <ellipse cx="128" cy="235" rx="52" ry="18" fill="#0B4FA3" stroke="#0B4FA3" stroke-width="2"/>
+  <path d="M76 235 v85 c0 10 23 18 52 18 s52-8 52-18 v-85" fill="#0B4FA3" stroke="#0B4FA3" stroke-width="2"/>
+  <path d="M76 263 c0 10 23 18 52 18 s52-8 52-18" fill="none" stroke="white" stroke-width="3"/>
+  <path d="M76 292 c0 10 23 18 52 18 s52-8 52-18" fill="none" stroke="white" stroke-width="3"/>
+  <circle cx="162" cy="262" r="4" fill="white"/><circle cx="162" cy="292" r="4" fill="white"/>
+  
+<line x1="260.0" y1="140.0" x2="313.7" y2="171.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="313.7" y1="171.0" x2="313.7" y2="233.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="313.7" y1="233.0" x2="260.0" y2="264.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="260.0" y1="264.0" x2="206.3" y2="233.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="206.3" y1="233.0" x2="206.3" y2="171.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="206.3" y1="171.0" x2="260.0" y2="140.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<circle cx="260.0" cy="140.0" r="10" fill="#1769C2" stroke="#263238" stroke-width="1.4"/>
+<circle cx="313.7" cy="171.0" r="10" fill="#7E6AB8" stroke="#263238" stroke-width="1.4"/>
+<circle cx="313.7" cy="233.0" r="10" fill="#26A65B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="260.0" cy="264.0" r="10" fill="#42B7B4" stroke="#263238" stroke-width="1.4"/>
+<circle cx="206.3" cy="233.0" r="10" fill="#F08A2B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="206.3" cy="171.0" r="10" fill="#9CA3AF" stroke="#263238" stroke-width="1.4"/>
+<line x1="225.0" y1="331.0" x2="263.1" y2="353.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="263.1" y1="353.0" x2="263.1" y2="397.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="263.1" y1="397.0" x2="225.0" y2="419.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="225.0" y1="419.0" x2="186.9" y2="397.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="186.9" y1="397.0" x2="186.9" y2="353.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="186.9" y1="353.0" x2="225.0" y2="331.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<circle cx="225.0" cy="331.0" r="10" fill="#1769C2" stroke="#263238" stroke-width="1.4"/>
+<circle cx="263.1" cy="353.0" r="10" fill="#7E6AB8" stroke="#263238" stroke-width="1.4"/>
+<circle cx="263.1" cy="397.0" r="10" fill="#26A65B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="225.0" cy="419.0" r="10" fill="#42B7B4" stroke="#263238" stroke-width="1.4"/>
+<circle cx="186.9" cy="397.0" r="10" fill="#F08A2B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="186.9" cy="353.0" r="10" fill="#9CA3AF" stroke="#263238" stroke-width="1.4"/>
+<line x1="334.0" y1="304.0" x2="373.8" y2="327.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="373.8" y1="327.0" x2="373.8" y2="373.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="373.8" y1="373.0" x2="334.0" y2="396.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="334.0" y1="396.0" x2="294.2" y2="373.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="294.2" y1="373.0" x2="294.2" y2="327.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="294.2" y1="327.0" x2="334.0" y2="304.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<circle cx="334.0" cy="304.0" r="10" fill="#1769C2" stroke="#263238" stroke-width="1.4"/>
+<circle cx="373.8" cy="327.0" r="10" fill="#7E6AB8" stroke="#263238" stroke-width="1.4"/>
+<circle cx="373.8" cy="373.0" r="10" fill="#26A65B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="334.0" cy="396.0" r="10" fill="#42B7B4" stroke="#263238" stroke-width="1.4"/>
+<circle cx="294.2" cy="373.0" r="10" fill="#F08A2B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="294.2" cy="327.0" r="10" fill="#9CA3AF" stroke="#263238" stroke-width="1.4"/>
+<text x="268" y="340" class="text" text-anchor="middle">...</text>
+
+  <rect x="92" y="560" width="110" height="138" rx="9" fill="#EEF5FF" stroke="#0B4FA3" stroke-width="2"/>
+  <rect x="77" y="582" width="110" height="138" rx="9" fill="#F8FBFF" stroke="#0B4FA3" stroke-width="2"/>
+  <rect x="62" y="606" width="110" height="138" rx="9" fill="white" stroke="#0B4FA3" stroke-width="2"/>
+  <line x1="84" y1="648" x2="150" y2="648" stroke="#B6C7DD" stroke-width="2"/>
+  <line x1="84" y1="672" x2="150" y2="672" stroke="#B6C7DD" stroke-width="2"/>
+  <line x1="84" y1="696" x2="134" y2="696" stroke="#B6C7DD" stroke-width="2"/>
+  
+<text x="270" y="620" class="text" fill="#0B4FA3">CycPeptMPDB</text>
+<text x="270" y="668" class="text" fill="#008C87">HELM strings</text>
+<text x="270" y="716" class="text" fill="#26A65B">Sources</text>
+<text x="270" y="764" class="text" fill="#E26A16">Permeability</text>
+<text x="270" y="812" class="text" fill="#4B5563">Year labels</text>
+
+<!-- Panel 2 -->
+
+  <rect x="492" y="130" width="366" height="136" rx="11" fill="white" stroke="#B6C7DD" stroke-width="1.5"/>
+  <text x="510" y="156" class="subhead" fill="#1769C2">Descriptor representation</text>
+  
+<g transform="translate(528,165)">
+  <circle cx="24" cy="18" r="6" fill="white" stroke="#111827" stroke-width="2"/><circle cx="75" cy="2" r="6" fill="white" stroke="#111827" stroke-width="2"/><circle cx="106" cy="45" r="6" fill="white" stroke="#111827" stroke-width="2"/>
+  <line x1="24" y1="18" x2="75" y2="2" stroke="#111827" stroke-width="2"/><line x1="75" y1="2" x2="106" y2="45" stroke="#111827" stroke-width="2"/><line x1="24" y1="18" x2="45" y2="62" stroke="#111827" stroke-width="2"/>
+  <text x="35" y="98" class="tiny">Physicochemical</text>
+</g>
+<line x1="672.0" y1="162.0" x2="699.7" y2="178.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="699.7" y1="178.0" x2="699.7" y2="210.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="7 7"/>
+<line x1="699.7" y1="210.0" x2="672.0" y2="226.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="7 7"/>
+<line x1="672.0" y1="226.0" x2="644.3" y2="210.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="644.3" y1="210.0" x2="644.3" y2="178.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="644.3" y1="178.0" x2="672.0" y2="162.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<circle cx="672.0" cy="162.0" r="10" fill="#1769C2" stroke="#263238" stroke-width="1.4"/>
+<circle cx="699.7" cy="178.0" r="10" fill="#7E6AB8" stroke="#263238" stroke-width="1.4"/>
+<circle cx="699.7" cy="210.0" r="10" fill="#26A65B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="672.0" cy="226.0" r="10" fill="#42B7B4" stroke="#263238" stroke-width="1.4"/>
+<circle cx="644.3" cy="210.0" r="10" fill="#F08A2B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="644.3" cy="178.0" r="10" fill="#9CA3AF" stroke="#263238" stroke-width="1.4"/>
+<text x="635" y="263" class="tiny">Topological</text>
+<line x1="785.0" y1="162.0" x2="812.7" y2="178.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="812.7" y1="178.0" x2="812.7" y2="210.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="7 7"/>
+<line x1="812.7" y1="210.0" x2="785.0" y2="226.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="7 7"/>
+<line x1="785.0" y1="226.0" x2="757.3" y2="210.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="757.3" y1="210.0" x2="757.3" y2="178.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="757.3" y1="178.0" x2="785.0" y2="162.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<circle cx="785.0" cy="162.0" r="10" fill="#1769C2" stroke="#263238" stroke-width="1.4"/>
+<circle cx="812.7" cy="178.0" r="10" fill="#7E6AB8" stroke="#263238" stroke-width="1.4"/>
+<circle cx="812.7" cy="210.0" r="10" fill="#26A65B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="785.0" cy="226.0" r="10" fill="#42B7B4" stroke="#263238" stroke-width="1.4"/>
+<circle cx="757.3" cy="210.0" r="10" fill="#F08A2B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="757.3" cy="178.0" r="10" fill="#9CA3AF" stroke="#263238" stroke-width="1.4"/>
+<text x="748" y="263" class="tiny">Geometrical</text>
+
+  <rect x="492" y="300" width="366" height="142" rx="11" fill="white" stroke="#B6C7DD" stroke-width="1.5"/>
+  <text x="510" y="326" class="subhead" fill="#1769C2">HELM representation</text>
+  
+<circle cx="546" cy="370" r="34" fill="white" stroke="#B6C7DD" stroke-width="2"/>
+<text x="546" y="358" text-anchor="middle" class="tiny">H</text><text x="546" y="378" text-anchor="middle" class="tiny">E</text><text x="546" y="398" text-anchor="middle" class="tiny">LM</text>
+<text x="604" y="340" class="tiny">PEPTIDE1{A.A.C.D.E.F}$$$$</text>
+<text x="604" y="368" class="tiny">PEPTIDE2{H.I.K.L.M.N}$$$$</text>
+<text x="604" y="396" class="tiny">CONNECT{C1-C6}$$$$</text>
+<text x="604" y="424" class="tiny">CLOSE{C1.C10}$$$$</text>
+
+  <rect x="492" y="476" width="366" height="184" rx="11" fill="white" stroke="#B6C7DD" stroke-width="1.5"/>
+  <text x="510" y="502" class="subhead" fill="#1769C2">Source split / LOSO CV</text>
+  
+<text x="520" y="522" class="tiny">Fold 1</text>
+<rect x="520" y="540" width="15" height="20" fill="#1769C2" fill-opacity="0.16" stroke="#1769C2" stroke-width="1.8"/>
+<rect x="542" y="566" width="15" height="20" fill="#7E6AB8" fill-opacity="0.16" stroke="#7E6AB8" stroke-width="1.8"/>
+<rect x="520" y="592" width="15" height="20" fill="#26A65B" fill-opacity="0.16" stroke="#26A65B" stroke-width="1.8"/>
+<rect x="542" y="618" width="15" height="20" fill="#F08A2B" fill-opacity="0.16" stroke="#F08A2B" stroke-width="1.8"/>
+<rect x="520" y="644" width="15" height="20" fill="#9CA3AF" fill-opacity="0.16" stroke="#9CA3AF" stroke-width="1.8"/>
+<text x="578" y="522" class="tiny">Fold 2</text>
+<rect x="578" y="540" width="15" height="20" fill="#1769C2" fill-opacity="0.16" stroke="#1769C2" stroke-width="1.8"/>
+<rect x="600" y="566" width="15" height="20" fill="#7E6AB8" fill-opacity="0.16" stroke="#7E6AB8" stroke-width="1.8"/>
+<rect x="578" y="592" width="15" height="20" fill="#26A65B" fill-opacity="0.16" stroke="#26A65B" stroke-width="1.8"/>
+<rect x="600" y="618" width="15" height="20" fill="#F08A2B" fill-opacity="0.16" stroke="#F08A2B" stroke-width="1.8"/>
+<rect x="578" y="644" width="15" height="20" fill="#9CA3AF" fill-opacity="0.16" stroke="#9CA3AF" stroke-width="1.8"/>
+<text x="636" y="522" class="tiny">Fold 3</text>
+<rect x="636" y="540" width="15" height="20" fill="#1769C2" fill-opacity="0.16" stroke="#1769C2" stroke-width="1.8"/>
+<rect x="658" y="566" width="15" height="20" fill="#7E6AB8" fill-opacity="0.16" stroke="#7E6AB8" stroke-width="1.8"/>
+<rect x="636" y="592" width="15" height="20" fill="#26A65B" fill-opacity="0.16" stroke="#26A65B" stroke-width="1.8"/>
+<rect x="658" y="618" width="15" height="20" fill="#F08A2B" fill-opacity="0.16" stroke="#F08A2B" stroke-width="1.8"/>
+<rect x="636" y="644" width="15" height="20" fill="#9CA3AF" fill-opacity="0.16" stroke="#9CA3AF" stroke-width="1.8"/>
+<text x="694" y="522" class="tiny">Fold N</text>
+<rect x="694" y="540" width="15" height="20" fill="#1769C2" fill-opacity="0.16" stroke="#1769C2" stroke-width="1.8"/>
+<rect x="716" y="566" width="15" height="20" fill="#7E6AB8" fill-opacity="0.16" stroke="#7E6AB8" stroke-width="1.8" stroke-dasharray="5 4"/>
+<rect x="694" y="592" width="15" height="20" fill="#26A65B" fill-opacity="0.16" stroke="#26A65B" stroke-width="1.8"/>
+<rect x="716" y="618" width="15" height="20" fill="#F08A2B" fill-opacity="0.16" stroke="#F08A2B" stroke-width="1.8" stroke-dasharray="5 4"/>
+<rect x="694" y="644" width="15" height="20" fill="#9CA3AF" fill-opacity="0.16" stroke="#9CA3AF" stroke-width="1.8"/>
+<rect x="540" y="632" width="18" height="18" fill="white" stroke="#4B5563" stroke-width="1.5"/><text x="566" y="646" class="tiny">Training sources</text>
+<rect x="704" y="632" width="18" height="18" fill="white" stroke="#111827" stroke-width="1.5" stroke-dasharray="5 4"/><text x="730" y="646" class="tiny">Held-out source</text>
+
+  <rect x="492" y="696" width="366" height="186" rx="11" fill="white" stroke="#B6C7DD" stroke-width="1.5"/>
+  <text x="510" y="722" class="subhead" fill="#1769C2">Performance (LOSO)</text>
+  
+
+  <line x1="590" y1="844" x2="740" y2="844" stroke="#111827" stroke-width="2"/>
+  <line x1="590" y1="844" x2="590" y2="734" stroke="#111827" stroke-width="2"/>
+  <path d="M595,839 C615,796 640,769 678,762 S720,752 740,746" fill="none" stroke="#1769C2" stroke-width="4"/>
+  <line x1="594" y1="840" x2="735" y2="742" stroke="#9CA3AF" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <text x="682" y="817" class="tiny">AUC</text>
+  <text x="634" y="866" class="tiny">False Positive Rate</text>
+  <text x="568" y="806" class="tiny" transform="rotate(-90 568 806)">True Positive Rate</text>
+  
+
+<!-- Panel 3 -->
+<circle cx="1015" cy="188" r="19" fill="#008C87"/><text x="1015" y="197" text-anchor="middle" class="num" style="font-size:22px">A</text>
+<text x="1050" y="197" class="route">Constrained optimization</text>
+<text x="1090" y="250" class="text">Local analog edits</text>
+<line x1="1050.0" y1="298.0" x2="1095.0" y2="324.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1095.0" y1="324.0" x2="1095.0" y2="376.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1095.0" y1="376.0" x2="1050.0" y2="402.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1050.0" y1="402.0" x2="1005.0" y2="376.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1005.0" y1="376.0" x2="1005.0" y2="324.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1005.0" y1="324.0" x2="1050.0" y2="298.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<circle cx="1050.0" cy="298.0" r="10" fill="#1769C2" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1095.0" cy="324.0" r="10" fill="#7E6AB8" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1095.0" cy="376.0" r="10" fill="#26A65B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1050.0" cy="402.0" r="10" fill="#42B7B4" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1005.0" cy="376.0" r="10" fill="#F08A2B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1005.0" cy="324.0" r="10" fill="#9CA3AF" stroke="#263238" stroke-width="1.4"/>
+<path d="M1115,350 C1148.5,350 1148.5,350 1182,350" fill="none" stroke="#008C87" stroke-width="8" stroke-linecap="round" marker-end="url(#008C87)"/>
+<line x1="1260.0" y1="292.0" x2="1310.2" y2="321.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1310.2" y1="321.0" x2="1310.2" y2="379.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="7 7"/>
+<line x1="1310.2" y1="379.0" x2="1260.0" y2="408.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="7 7"/>
+<line x1="1260.0" y1="408.0" x2="1209.8" y2="379.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1209.8" y1="379.0" x2="1209.8" y2="321.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1209.8" y1="321.0" x2="1260.0" y2="292.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<circle cx="1260.0" cy="292.0" r="10" fill="#1769C2" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1310.2" cy="321.0" r="10" fill="#7E6AB8" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1310.2" cy="379.0" r="10" fill="#26A65B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1260.0" cy="408.0" r="10" fill="#42B7B4" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1209.8" cy="379.0" r="10" fill="#F08A2B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1209.8" cy="321.0" r="10" fill="#9CA3AF" stroke="#263238" stroke-width="1.4"/>
+<text x="1360" y="350" class="text">...</text>
+<line x1="952" y1="494" x2="1394" y2="494" stroke="#008C87" stroke-width="3" stroke-dasharray="3 8"/>
+<circle cx="1015" cy="556" r="19" fill="#008C87"/><text x="1015" y="565" text-anchor="middle" class="num" style="font-size:22px">B</text>
+<text x="1050" y="565" class="route">De novo generation</text>
+<text x="1072" y="618" class="text">Diverse peptide rings</text>
+<line x1="1035.0" y1="692.0" x2="1072.2" y2="713.5" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1072.2" y1="713.5" x2="1072.2" y2="756.5" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1072.2" y1="756.5" x2="1035.0" y2="778.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1035.0" y1="778.0" x2="997.8" y2="756.5" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="997.8" y1="756.5" x2="997.8" y2="713.5" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="997.8" y1="713.5" x2="1035.0" y2="692.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<circle cx="1035.0" cy="692.0" r="10" fill="#1769C2" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1072.2" cy="713.5" r="10" fill="#7E6AB8" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1072.2" cy="756.5" r="10" fill="#26A65B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1035.0" cy="778.0" r="10" fill="#42B7B4" stroke="#263238" stroke-width="1.4"/>
+<circle cx="997.8" cy="756.5" r="10" fill="#F08A2B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="997.8" cy="713.5" r="10" fill="#9CA3AF" stroke="#263238" stroke-width="1.4"/>
+<line x1="1166.0" y1="667.0" x2="1203.2" y2="688.5" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1203.2" y1="688.5" x2="1203.2" y2="731.5" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1203.2" y1="731.5" x2="1166.0" y2="753.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1166.0" y1="753.0" x2="1128.8" y2="731.5" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1128.8" y1="731.5" x2="1128.8" y2="688.5" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1128.8" y1="688.5" x2="1166.0" y2="667.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<circle cx="1166.0" cy="667.0" r="10" fill="#1769C2" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1203.2" cy="688.5" r="10" fill="#7E6AB8" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1203.2" cy="731.5" r="10" fill="#26A65B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1166.0" cy="753.0" r="10" fill="#42B7B4" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1128.8" cy="731.5" r="10" fill="#F08A2B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1128.8" cy="688.5" r="10" fill="#9CA3AF" stroke="#263238" stroke-width="1.4"/>
+<line x1="1304.0" y1="695.0" x2="1341.2" y2="716.5" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1341.2" y1="716.5" x2="1341.2" y2="759.5" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1341.2" y1="759.5" x2="1304.0" y2="781.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1304.0" y1="781.0" x2="1266.8" y2="759.5" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1266.8" y1="759.5" x2="1266.8" y2="716.5" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1266.8" y1="716.5" x2="1304.0" y2="695.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<circle cx="1304.0" cy="695.0" r="10" fill="#1769C2" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1341.2" cy="716.5" r="10" fill="#7E6AB8" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1341.2" cy="759.5" r="10" fill="#26A65B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1304.0" cy="781.0" r="10" fill="#42B7B4" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1266.8" cy="759.5" r="10" fill="#F08A2B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1266.8" cy="716.5" r="10" fill="#9CA3AF" stroke="#263238" stroke-width="1.4"/>
+<line x1="1100.0" y1="803.0" x2="1137.2" y2="824.5" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1137.2" y1="824.5" x2="1137.2" y2="867.5" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1137.2" y1="867.5" x2="1100.0" y2="889.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1100.0" y1="889.0" x2="1062.8" y2="867.5" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1062.8" y1="867.5" x2="1062.8" y2="824.5" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1062.8" y1="824.5" x2="1100.0" y2="803.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<circle cx="1100.0" cy="803.0" r="10" fill="#1769C2" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1137.2" cy="824.5" r="10" fill="#7E6AB8" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1137.2" cy="867.5" r="10" fill="#26A65B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1100.0" cy="889.0" r="10" fill="#42B7B4" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1062.8" cy="867.5" r="10" fill="#F08A2B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1062.8" cy="824.5" r="10" fill="#9CA3AF" stroke="#263238" stroke-width="1.4"/>
+<line x1="1240.0" y1="801.0" x2="1277.2" y2="822.5" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1277.2" y1="822.5" x2="1277.2" y2="865.5" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1277.2" y1="865.5" x2="1240.0" y2="887.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1240.0" y1="887.0" x2="1202.8" y2="865.5" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1202.8" y1="865.5" x2="1202.8" y2="822.5" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1202.8" y1="822.5" x2="1240.0" y2="801.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<circle cx="1240.0" cy="801.0" r="10" fill="#1769C2" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1277.2" cy="822.5" r="10" fill="#7E6AB8" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1277.2" cy="865.5" r="10" fill="#26A65B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1240.0" cy="887.0" r="10" fill="#42B7B4" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1202.8" cy="865.5" r="10" fill="#F08A2B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1202.8" cy="822.5" r="10" fill="#9CA3AF" stroke="#263238" stroke-width="1.4"/>
+<text x="1370" y="758" class="text">...</text>
+<path d="M926,360 C900,360 900,735 952,735" fill="none" stroke="#008C87" stroke-width="8" stroke-linecap="round"/>
+
+<!-- Panel 4 -->
+
+      <circle cx="1548" cy="190" r="56" fill="#FDECD9"/>
+      
+        <path d="M1512,202 A42,42 0 0 1 1584,202" fill="none" stroke="#111827" stroke-width="4"/>
+        <line x1="1548" y1="202" x2="1570" y2="172" stroke="#111827" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="1548" cy="202" r="5" fill="#111827"/>
+      <text x="1636" y="178" class="filterTitle">Uncertainty</text>
+      <text x="1636" y="208" class="filterDesc">(low predicted uncertainty)</text>
+    
+<line x1="1478" y1="310" x2="1824" y2="310" stroke="#E26A16" stroke-width="3" stroke-dasharray="3 8"/>
+
+      <circle cx="1548" cy="405" r="56" fill="#FDECD9"/>
+      <circle cx="1516" cy="377" r="4" fill="#D84A4A"/><circle cx="1529" cy="377" r="4" fill="#0B4FA3"/><circle cx="1542" cy="377" r="4" fill="#008C87"/><circle cx="1555" cy="377" r="4" fill="#E26A16"/><circle cx="1568" cy="377" r="4" fill="#26A65B"/><circle cx="1581" cy="377" r="4" fill="#D84A4A"/><circle cx="1516" cy="390" r="4" fill="#0B4FA3"/><circle cx="1529" cy="390" r="4" fill="#008C87"/><circle cx="1542" cy="390" r="4" fill="#E26A16"/><circle cx="1555" cy="390" r="4" fill="#26A65B"/><circle cx="1568" cy="390" r="4" fill="#D84A4A"/><circle cx="1581" cy="390" r="4" fill="#0B4FA3"/><circle cx="1516" cy="403" r="4" fill="#008C87"/><circle cx="1529" cy="403" r="4" fill="#E26A16"/><circle cx="1542" cy="403" r="4" fill="#26A65B"/><circle cx="1555" cy="403" r="4" fill="#D84A4A"/><circle cx="1568" cy="403" r="4" fill="#0B4FA3"/><circle cx="1581" cy="403" r="4" fill="#008C87"/><circle cx="1516" cy="416" r="4" fill="#E26A16"/><circle cx="1529" cy="416" r="4" fill="#26A65B"/><circle cx="1542" cy="416" r="4" fill="#D84A4A"/><circle cx="1555" cy="416" r="4" fill="#0B4FA3"/><circle cx="1568" cy="416" r="4" fill="#008C87"/><circle cx="1581" cy="416" r="4" fill="#E26A16"/><circle cx="1516" cy="429" r="4" fill="#26A65B"/><circle cx="1529" cy="429" r="4" fill="#D84A4A"/>
+      <text x="1636" y="393" class="filterTitle">Diversity</text>
+      <text x="1636" y="423" class="filterDesc">(high structural diversity)</text>
+    
+<line x1="1478" y1="526" x2="1824" y2="526" stroke="#E26A16" stroke-width="3" stroke-dasharray="3 8"/>
+
+      <circle cx="1548" cy="620" r="56" fill="#FDECD9"/>
+      <path d="M1513,650 C1530,585 1566,585 1583,650" fill="none" stroke="#111827" stroke-width="2"/><path d="M1521,650 C1533,585 1564,585 1575,650" fill="none" stroke="#111827" stroke-width="2"/><path d="M1529,650 C1536,585 1562,585 1567,650" fill="none" stroke="#111827" stroke-width="2"/><path d="M1537,650 C1539,585 1560,585 1559,650" fill="none" stroke="#111827" stroke-width="2"/><path d="M1545,650 C1542,585 1558,585 1551,650" fill="none" stroke="#111827" stroke-width="2"/><path d="M1553,650 C1545,585 1556,585 1543,650" fill="none" stroke="#111827" stroke-width="2"/>
+      <text x="1636" y="608" class="filterTitle">Novelty</text>
+      <text x="1636" y="638" class="filterDesc">(low similarity to training data)</text>
+    
+<line x1="1478" y1="742" x2="1824" y2="742" stroke="#E26A16" stroke-width="3" stroke-dasharray="3 8"/>
+
+      <circle cx="1548" cy="828" r="56" fill="#FDECD9"/>
+      
+        <path d="M1513,848 C1503,806 1558,783 1586,816 C1606,840 1568,870 1513,848Z" fill="#DDE7F2" stroke="#607D8B" stroke-width="2"/>
+        <circle cx="1538" cy="828" r="18" fill="#2F80ED" fill-opacity="0.72"/>
+        <circle cx="1566" cy="836" r="18" fill="#D84A4A" fill-opacity="0.72"/>
+        <rect x="1504" y="876" width="88" height="8" fill="url(#polarity)"/>
+      <text x="1636" y="816" class="filterTitle">3D polarity proxy</text>
+      <text x="1636" y="846" class="filterDesc">(balanced polar surface)</text>
+    
+
+<!-- Panel 5 -->
+<text x="2025" y="178" text-anchor="middle" class="route" style="font-size:22px">Optimized (route A)</text>
+<line x1="2025.0" y1="224.0" x2="2090.8" y2="262.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="2090.8" y1="262.0" x2="2090.8" y2="338.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="2090.8" y1="338.0" x2="2025.0" y2="376.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="2025.0" y1="376.0" x2="1959.2" y2="338.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1959.2" y1="338.0" x2="1959.2" y2="262.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1959.2" y1="262.0" x2="2025.0" y2="224.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<circle cx="2025.0" cy="224.0" r="10" fill="#1769C2" stroke="#263238" stroke-width="1.4"/>
+<circle cx="2090.8" cy="262.0" r="10" fill="#7E6AB8" stroke="#263238" stroke-width="1.4"/>
+<circle cx="2090.8" cy="338.0" r="10" fill="#26A65B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="2025.0" cy="376.0" r="10" fill="#42B7B4" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1959.2" cy="338.0" r="10" fill="#F08A2B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1959.2" cy="262.0" r="10" fill="#9CA3AF" stroke="#263238" stroke-width="1.4"/>
+<path d="M1995,390 l24,24 l43,-52" fill="none" stroke="#008C87" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="1905" y1="506" x2="2146" y2="506" stroke="#0B4FA3" stroke-width="3" stroke-dasharray="3 8"/>
+<text x="2025" y="608" text-anchor="middle" class="route" style="font-size:22px">De novo (route B)</text>
+<line x1="2025.0" y1="674.0" x2="2090.8" y2="712.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="2090.8" y1="712.0" x2="2090.8" y2="788.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="2090.8" y1="788.0" x2="2025.0" y2="826.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="2025.0" y1="826.0" x2="1959.2" y2="788.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1959.2" y1="788.0" x2="1959.2" y2="712.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1959.2" y1="712.0" x2="2025.0" y2="674.0" stroke="#111827" stroke-width="2.2" stroke-linecap="round"/>
+<circle cx="2025.0" cy="674.0" r="10" fill="#1769C2" stroke="#263238" stroke-width="1.4"/>
+<circle cx="2090.8" cy="712.0" r="10" fill="#7E6AB8" stroke="#263238" stroke-width="1.4"/>
+<circle cx="2090.8" cy="788.0" r="10" fill="#26A65B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="2025.0" cy="826.0" r="10" fill="#42B7B4" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1959.2" cy="788.0" r="10" fill="#F08A2B" stroke="#263238" stroke-width="1.4"/>
+<circle cx="1959.2" cy="712.0" r="10" fill="#9CA3AF" stroke="#263238" stroke-width="1.4"/>
+<path d="M1995,840 l24,24 l43,-52" fill="none" stroke="#008C87" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

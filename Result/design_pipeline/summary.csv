@@ -1,0 +1,2 @@
+seed_count,unique_seed_sources,candidate_pool_size,generated_candidates,filtered_candidates,diverse_top_candidates,unique_parents_in_top,selected_min_improvement,selected_min_positive_prob,mean_predicted_permeability,mean_improvement
+40,15,24,222464,233,26,13,0.15,0.85,-4.711468630535898,0.22093480294049708

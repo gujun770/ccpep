@@ -1,0 +1,31 @@
+{
+  "available_tables": {
+    "main_comparison": "D:\\ccpep-main\\ccpep-main\\Result\\paper_tables\\main_comparison.csv",
+    "ablation": "D:\\ccpep-main\\ccpep-main\\Result\\paper_tables\\ablation.csv",
+    "descriptor_benchmark": "D:\\ccpep-main\\ccpep-main\\Result\\paper_tables\\descriptor_benchmark.csv",
+    "generation_summary": "D:\\ccpep-main\\ccpep-main\\Result\\generation_evaluation\\summary.csv",
+    "docking_candidates": "D:\\ccpep-main\\ccpep-main\\Result\\docking_candidates\\top20_docking_candidates.csv"
+  },
+  "highlights": [
+    {
+      "section": "random_split_prediction",
+      "finding": "Best random-split AUROC is 0.846 from Hybrid predictor."
+    },
+    {
+      "section": "group_cv_prediction",
+      "finding": "Best repeated group-CV descriptor model is random_forest with AUROC 0.725."
+    },
+    {
+      "section": "optimized_shortlist",
+      "finding": "optimized_shortlist contains 12 candidates with novelty 1.00, uniqueness 1.00, and mean predicted permeability -4.511."
+    },
+    {
+      "section": "de_novo_shortlist",
+      "finding": "de_novo_shortlist contains 24 candidates with novelty 1.00, uniqueness 1.00, and mean predicted permeability -4.725."
+    },
+    {
+      "section": "validation_candidates",
+      "finding": "Unified validation set contains 20 top candidates from optimized and de novo routes."
+    }
+  ]
+}

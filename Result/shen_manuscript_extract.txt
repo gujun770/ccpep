@@ -1,0 +1,357 @@
+
+Title 
+A Geometry-Aware Generative Framework Integrating GPS-VAE and Transformer-SELFIES for Structure-Based De Novo Drug Design
+Authors 
+Shiqian Han ¹, Yuxing Shen ²*, Honghui An 2 , Jun Wang 2
+Affiliations
+1. College of Science, Shenyang University of Chemical Technology, Shenyang, Liaoning 110142, China
+2. College of Computer Science and Technology, Shenyang University of Chemical Technology, Shenyang, Liaoning 110142, China
+3. Key Laboratory for Chemical Process Industry Intelligent Technology of Liaoning Province, Shenyang, Liaoning 110142, China
+Corresponding Author
+Yuxing Shen
+Email: gujunxiaoan@gmail.com
+ORCID: 0009-0008-1190-6170
+Acknowledgments 
+This work was supported by the Liaoning Province Nature Fund Project (No. 2022-MS-291); the National foreign expert project plan (G2022006008L); and the Scientific research project of Liaoning Province Education Department (LJKMZ20220781, LJKMZ20220783).
+Abstract
+Context: Designing novel ligands tailored to specific protein binding pockets remains a core objective in structure-based de novo drug design (SBDD). However, deep generative approaches encounter key challenges: standard graph neural networks fail to capture global pocket topology, SMILES-based models generate chemically invalid structures, and reinforcement learning remains unstable in multi-objective optimization. We evaluated our proposed framework on Janus Kinase 2 (JAK2) and Dopamine D2 Receptor (DRD2) targets. Compared to baseline models, our GPS-VAE successfully captured complex geometric dependencies, achieving robust active site representation and topological reconstruction. For molecular generation, we identified fragment- and lead-like scaffolds demonstrating high predicted Ligand Efficiency (LE &gt; 0.5) under the AutoDock Vina scoring function, discovering interesting macrocyclic adaptations targeting JAK2. We demonstrate that high-quality data representation combined with evolutionary search significantly enhances the efficiency of de novo drug design.
+Methods: We developed a new generative framework combining geometric deep learning and evolutionary search. First, we built a Graph Interaction Transformer Variational Autoencoder (GPS-VAE) utilizing local Graph Attention Networks and global Transformer self-attention to extract physicochemical and geometric features. Second, we employed a Transformer-SELFIES autoencoder to replace the RNN-SMILES architecture, guaranteeing 100% chemical validity. Finally, we designed a variational projection network to anchor protein features into the chemical latent space, followed by structural refinement using the STONED evolutionary algorithm. Molecule preprocessing, docking, and fitness evaluations were performed using OpenBabel and AutoDock Vina.
+Keywords: Structure-based drug design; GPS-VAE; SELFIES; Evolutionary algorithm; Generative models
+1. Introduction
+Discovering new small molecules that bind to specific targets is at the heart of modern drug development. Traditional structure-based design methods like docking and fragment growing are often computationally prohibitive and only search a small fraction of the space REF _Ref221546648 \r \h  \* MERGEFORMAT [2, REF _Ref221546658 \r \h  \* MERGEFORMAT 15]. Recently, deep generative models are becoming a paradigm for accelerating SBDD by learning continuous representations of chemical and biological spaces  REF _Ref221546782 \r \h  \* MERGEFORMAT [17, REF _Ref221546784 \r \h  \* MERGEFORMAT 22]. Krishnan et al. used a multimodal variational autoencoder (VAE) to condition generation on protein pocket graphs and ligand SMILES strings and showed that molecular design could be guided by pocket topology REF _Ref221548887 \r \h  \* MERGEFORMAT [1].
+However, existing approaches still suffer from significant limitations in representation capabilities and generation quality. For protein representation, standard Graph Attention Networks (GAT) mainly collect local neighborhood information REF _Ref221548960 \r \h  \* MERGEFORMAT [8], but fail to capture global cavity shapes and long-range residue constraints crucial for binding affinity  REF _Ref221548974 \r \h  \* MERGEFORMAT [10, REF _Ref221548975 \r \h  \* MERGEFORMAT 12]. With molecular representation, SMILES syntax is often fragile, making the model prone to generating chemically invalid structures, such as unclosed rings  REF _Ref221551447 \r \h  \* MERGEFORMAT [4, REF _Ref221551764 \r \h  \* MERGEFORMAT 25]. During property tuning, standard Reinforcement Learning (RL) strategies often suffer from “mode collapse” or sparse reward problems in high-dimensional chemical spaces, and so lack generation diversity REF _Ref221548975 \r \h  \* MERGEFORMAT [12, REF _Ref221549091 \r \h  \* MERGEFORMAT 13].
+To overcome these challenges, we propose an enhanced generative framework. Our contributions include three major parts:
+Proposing the GPS-VAE architecture: We add a Transformer global self-attention module REF _Ref221551496 \r \h  \* MERGEFORMAT [7] to the encoder to learn short-range physicochemical interactions (e.g., hydrogen bonds) and long-range geometrical dependencies between residues in a consistent manner REF _Ref221560472 \r \h  \* MERGEFORMAT [46] .
+Employing a Transformer-SELFIES generator: Using the syntactically robust SELFIES representation REF _Ref221551477 \r \h  \* MERGEFORMAT [5] and the Transformer architecture provides 100% chemical validity of stored and generated molecular structures, allowing for a better understanding of long-range atomic dependencies.
+Introducing an evolutionary optimization strategy: We replace unstable RL with a variational projection network for population initialization, followed by sequence evolution via the STONED algorithm  REF _Ref221551533 \r \h  \* MERGEFORMAT [6]. This two-stage approach effectively optimizes drug-likeness while preserving scaffold diversity.
+We evaluated this framework on JAK2 kinase REF _Ref221549183 \r \h  \* MERGEFORMAT [35] and DRD2 G-protein-coupled receptor REF _Ref221549171 \r \h  \* MERGEFORMAT [38] benchmark targets. Experimental results show that our generated candidates demonstrate high predicted ligand efficiency (LE) under the AutoDock Vina scoring function, serving as high-atom-efficiency fragment- or lead-like scaffolds that can autonomously discover novel topologies highly complementary to the pocket geometry.
+2. Related Work
+Structure-Based Deep Generative Models 
+Early SBDD deep learning approaches usually used 3D-CNNs based on 3D voxel grids to generate ligand shapes complementary to pockets REF _Ref221546648 \r \h  \* MERGEFORMAT [2]. Voxel representations often lack rotational invariance and require high computation and storage overhead. Graph neural networks (GNNs) are a mainstream method REF _Ref221549261 \r \h  \* MERGEFORMAT [19], treating amino acid residues as nodes and interactions as edges. The GAT-VAE model of Krishnan et al. represents a state-of-the-art method, where active sites are encoded via graph attention REF _Ref221548887 \r \h  \* MERGEFORMAT [1]. GAT captures local features successfully, but with its limited receptive field, it is not able to incorporate global topological information REF _Ref221548960 \r \h  \* MERGEFORMAT [8, REF _Ref221551401 \r \h  \* MERGEFORMAT 21]. Recent work such as Graphormer has shown that inserting Transformer mechanisms into graphs resolves this challenge, hence the GPS layer is proposed in this work REF _Ref221548974 \r \h  \* MERGEFORMAT [10].
+Molecular Representation and Sequence Generation 
+Molecular representation is a critical factor in generative models. SMILES is a common input for sequence generation models (e.g., RNNs) REF _Ref221551447 \r \h  \* MERGEFORMAT [4, REF _Ref221551459 \r \h  \* MERGEFORMAT 42], but its syntax is sensitive to character variations and often produces invalid molecules. Krenn et al. introduced SELFIES (Self-Referencing Embedded Strings), a formal grammar where all symbol permutations correspond to a valid molecular graph REF _Ref221551477 \r \h  \* MERGEFORMAT [5]. When combined with Transformer architectures, it has performed much better than traditional RNN/GRU models REF _Ref221551496 \r \h  \* MERGEFORMAT [7 REF _Ref223190986 \r \h  \* MERGEFORMAT ] , providing high-quality, syntactically correct molecular generation.
+Molecular Optimization-Based Methods 
+Reinforcement learning (RL) is widely used to guide generative representations toward high-affinity regions REF _Ref221548975 \r \h  \* MERGEFORMAT [12, REF _Ref221549091 \r \h  \* MERGEFORMAT 13]. However, RL agents are highly unstable when optimizing complex rewards (e.g., molecular docking scores) and are subject to local optima (i.e., the exploitation-exploration problem) REF _Ref221551559 \r \h  \* MERGEFORMAT [23]. In contrast, evolutionary methods based on genetic algorithms (e.g., STONED) provide an efficient, more stable search by directly mutating and selecting strings REF _Ref221551533 \r \h  \* MERGEFORMAT [6]. In this paper, we solve the cold-start problem for classical genetic algorithms by providing a high-precision initial population through a variational projection network REF _Ref221551542 \r \h  \* MERGEFORMAT [9].
+3. Methods
+Figure 1. The overall workflow of the proposed geometry-aware generative framework. (A) Data preparation and multimodal representation learning via GPS-VAE (protein) and Transformer-SELFIES (ligand). (B) Variational multimodal alignment using a projection network to map protein embeddings to the chemical latent space. (C) Evolutionary optimization employing the STONED algorithm with a two-stage search protocol (Global Discovery &amp; Focused Refinement). (D) Evaluation benchmarking against FDA-approved drugs on JAK2 and DRD2 targets.
+3.1. Protein Representation Learning: GPS-VAE
+This section describes the dataset construction workflow and GPS-VAE model architecture for extracting protein pocket features. As shown in Figure 1A, this study first established a comprehensive workflow encompassing data preprocessing and multimodal representation learning. By integrating local geometric and global topological information, the model maps active sites onto a low-dimensional latent distribution.
+3.1.1. Dataset Construction and Graph Definition
+To ensure the model learns high-quality physicochemical features, we selected data from the PDBbind v2019 Refined Set and scPDB databases. Filtering criteria included: (1) X-ray resolution better than 2.5 Å; (2) protein family member count less than 20. To eliminate data redundancy, we performed deduplication based on UniProt IDs, calculated sequence coverage for entries with the same ID, and retained only the most representative structure with the highest coverage and optimal resolution. The final dataset comprises 5,931 unique active sites.
+We modeled active sites as attributed graphs. Nodes represent amino acid residues within 6.0 Å of co-crystallized ligands, featuring 7-dimensional residue-type one-hot encodings and 2-dimensional hydrogen bond donor/acceptor properties. Edges are defined by spatial proximity, and undirected edges are established when the minimum interatomic distance between residues is less than 4.0 Å.
+3.1.2. GPS-VAE Architecture
+The GPS-VAE consists of an encoder, a variational layer, and a decoder. The core of the encoder introduces the GPS layer, designed to capture local physicochemical interactions and global cavity geometry in parallel.
+(1) Structure-Enhanced Input Representation
+To compensate for the limitations of Graph Neural Networks in capturing spatial arrangement and node importance, we integrated three types of learnable structural encodings into the initial node features :
+Positional Encoding: Encodes residue sequence order information.
+Degree Encoding: Captures local connectivity density.
+Centrality Encoding: Explicitly embeds the global importance of residues based on degree centrality.
+The fused input hidden representation  is calculated as follows:
+(2) GPS Layer (Local-Global Parallel Mechanism)
+This is the core module of the encoder, consisting of two parallel sub-modules:
+Local Interaction Module: Employs a Graph Attention mechanism to aggregate neighborhood  information, capturing short-range interactions such as hydrogen bonds.
+Global Self-Attention Module: Adopts a Transformer global self-attention mechanism, allowing nodes to attend to any residue within the pocket to capture long-range geometric dependencies.
+The outputs of both modules are fused via a non-linear projection and employ residual connections:
+Where  represents the linear mapping after layer normalization.
+(3) Multi-scale Readout and Decoding
+To generate graph embeddings robust to pocket size variations, we employed a Multi-scale Readout strategy, concatenating mean pooling, max pooling, and centrality-weighted pooling of node representations. The decoder reconstructs the adjacency matrix by calculating the inner product probability between node pairs:
+Where  represents the refined node features mapped from latent variables .
+3.1.3. Training Objectives
+The model is trained by minimizing a composite loss function:
+Where employs Weighted Binary Cross-Entropy (Weighted BCE) to address edge sparsity; includes a Free Bits strategy (threshold) to prevent posterior collapse and ensure the latent space retains valid information:
+3.2. Ligand Generation: Transformer-SELFIES Autoencoder
+More precisely, we describe the sequence generative model that learns chemical space distributions and generates valid molecules. As the counterpart to the protein encoder, our ligand generation pipeline (bottom panel of Figure 1A) focuses on chemical validity. By connecting a Transformer with the SELFIES representation, we successfully circumvent the shortcomings of conventional RNN-SMILES models, namely the inability to capture long-range dependencies and the lack of guaranteed chemical validity.
+3.2.1. Molecular Representation and Data
+In order to completely eliminate the creation of invalid molecules, we use SELFIES (Self-Referencing Embedded Strings). Its grammar ensures every generated character sequence forms a valid molecular graph. All model pre-training data comes from the ChEMBL database, which has approximately 250,000 drug-like molecules.
+3.2.2. Model Architecture
+We constructed a Transformer encoder-decoder architecture with an embedding dimension of , 6 layers for both the encoder and decoder, 8 attention heads, and a feed-forward network dimension of 2048.
+Encoder and attention pooling: To compress variable-length molecular sequences into a fixed-dimensional latent vector m, we did not truncate the first or last token. Instead, we proposed a learnable attention pooling layer (this layer computes a weighted sum of the encoder outputs and maps them to the latent space using a Tanh activation), which acts as an information bottleneck for the model to learn high-level semantic features.
+Decoder: The decoder retrieves the latent vector m as memory and uses masked multi-head attention to autoregressively reconstruct the SELFIES strings.
+3.2.3. Training and Augmentation Strategies
+To extend generalization for limited data and avoid overfitting, we regularized our model with the following:
+On-the-fly Random Augmentation: During training, input SMILES strings are converted to non-canonical (randomized) strings with a 50% probability before conversion to SELFIES, making the model learn the underlying topology of molecules instead of fixed string sequences.
+Optimization settings: The model was trained for 100 epochs using the AdamW optimizer and the OneCycleLR learning rate scheduler to achieve fast convergence.
+Label smoothing: A smoothing factor of 0.1 in the cross-entropy loss was added in order to soften the target distribution and make generation robust.
+3.3. Conditional Generation: Variational Projection Network
+To bridge the geometric and chemical spaces, we implemented a Variational Projection Network as detailed in Figure 1B, connecting the frozen GPS-VAE (protein space) and Transformer-SELFIES (chemical space). This module aims to capture the inherent "one-to-many" diversity in protein-ligand interactions (i.e., a single pocket can bind multiple chemical scaffolds).
+Network Architecture
+The projection network consists of multi-layer Residual Blocks and Layer Normalization. It receives the protein feature vector extracted by GPS-VAE and predicts the parameters (mean and log-variance) of the conditional distribution in the chemical latent space. To ensure the projected distribution aligns with the Tanh-activated latent space of the pre-trained Transformer, we applied a Tanh activation constraint to the predicted mean , limiting its range to the interval [-1, 1].
+Variational Alignment Objectives
+Model training employs the Reparameterization Trick, mapping protein features to the chemical coordinates of ground truth ligands by minimizing a composite loss function:
+Where the MSE term is responsible for precisely anchoring chemical semantics, and the KL divergence term (weight ) constrains the smoothness of the predicted distribution to prevent overfitting. During the inference stage, the model samples latent vector  based on the input protein features and generates the corresponding molecular sequences through the Transformer decoder.
+3.4. Evolutionary Molecular Optimization
+The core optimization process employed a two-stage evolutionary strategy (Figure 1C). To address the potential of deep generative models to get stuck in local optima and to achieve deep exploration of the chemical space, we adopted the SELFIES-based STONED evolutionary algorithm. This algorithm implemented a two-stage sequential evolution protocol, enabling progressive optimization from “global scaffold discovery” to “local structure refinement” while ensuring 100% chemical validity.
+Genetic Operators and Mutation Strategies 
+The evolutionary process operates directly at the SELFIES string level, circumventing common SMILES syntax errors. We defined three core genetic operators:
+Replacement: Modifies existing atom types or chemical bonds to fine-tune local chemical environments. 
+Insertion: Introduces new atoms or side-chain fragments to increase structural complexity. 
+Deletion: Removes substructures to streamline scaffolds or eliminate redundant groups.
+Two-Stage Sequence Evolution Protocol 
+In order to balance exploration and exploitation, we designed a staged evolutionary workflow.
+Stage 1: Global Scaffold Discovery. This initial phase aims to identify core scaffolds that are geometrically complementary to the target pocket. Instead of relying on complex pre-trained models, the starting population consists of generic, low-molecular-weight pharmacophore fragments. The algorithm operates at high mutation rates, allowing molecules to freely grow and recombine within a broad chemical space to uncover potentially high-activity scaffolds.
+Stage 2: Structural Refinement. This phase shifts the focus toward deep exploitation. The starting population is strictly limited to the Top-Elite molecules selected from Phase I. Here, the algorithm is constrained to make localized adjustments around the dominant scaffolds. This fine-tuning optimizes side-chain physicochemical properties (such as solubility and polarity), ultimately transforming them into high-quality lead compounds.
+Multi-Objective Fitness Function:
+Molecular selection is governed by a combined fitness function (coupling physical binding energy with drug-likeness constraints):
+Where  is the binding free energy calculated by AutoDock Vina, QED is the Quantitative Estimate of Drug-likeness, and SA is the Synthetic Accessibility score. The Penalty term strictly penalizes structures that violate ring size constraints or contain unstable chemical bonds (e.g., N-F bonds).
+3.5. Computational Evaluation Protocols
+Finally, we evaluated the generated molecules using structural and pharmacodynamic protocols as shown in Fig. 1D. To systematically assess the biological activity potential of the generated candidates, we constructed a comprehensive workflow including molecular docking, physicochemical property analysis, and clinical benchmark comparisons.
+Automated Molecular Docking: We established a docking workflow using AutoDock Vina. Receptor structures (JAK2: 3UGC, DRD2: 6CM4) were preprocessed in OpenBabel in order to remove water molecules, repair side chains, and add polar hydrogens. The docking grid box was placed near the active center with all dimensions fixed at 20 × 20 × 20 Å. Center coordinates were set to (21.88, -18.27, -14.61) for JAK2 and (9.93, 5.67, -12.18) for DRD2. Search exhaustiveness was strictly set to 8.
+Evaluation Metrics and Clinical Benchmarks: Besides binding energy, Ligand Efficiency () was included as a primary evaluation metric to evaluate the atom efficiency of the generated scaffolds. Lipinski's Rule of Five compliance, LogP, and TPSA were also evaluated to verify drug-likeness. Finally, we directly compared the generated molecules with FDA-approved clinical drugs (JAK2 inhibitors: Ruxolitinib, Fedratinib; DRD2 antagonists: Risperidone, Clozapine) under the same docking conditions.
+4. Results and Discussion
+4.1. Performance Evaluation of the Protein Representation Model: GPS-VAE
+4.1.1. Reconstruction Performance and Mechanism Investigation
+To validate the learning stability of GPS-VAE, we first explored the training process. As illustrated in Fig. 2, benefiting from the KL Annealing method, our model reached convergence after around 20 epochs. The validation curve closely follows the training curve, which suggests good generalization and a lack of overfitting.
+Figure 2. Training dynamics of GPS-VAE. (a) ROC-AUC curves; (b) PR-AUC curves. The rapid convergence of validation metrics indicates the model possesses robust learning capabilities.
+Based on this, we compared reconstructed data on the high-quality Refined Set (Table 1). To avoid data sparsity bias, we conducted extensive comparisons following the Rigorous Protocol. Only the upper triangular matrix is considered and no padded regions are allowed. Results show that Graphormer-VAE, relying solely on global attention, struggles with sparse contact graphs (PR-AUC 0.233), while GPS-VAE achieves nearly perfect reconstruction (ROC-AUC 0.999, PR-AUC 0.989) by combining local message passing with global geometric constraints, significantly outperforming the baseline model GAT-VAE (ROC-AUC 0.941). This confirms that the synergy between the local module constructing the physical backbone and the global module supplementing long-range constraints is essential to precisely represent the pocket. Detailed performance curves on the independent test set are given in Fig. 3.
+For the pocket graph reconstruction task, the model is trained to predict the presence or absence of edges (interactions) between nodes (residues). While the GPS-VAE achieves an exceptionally high ROC-AUC of 0.999, it is important to acknowledge that this metric can be inherently inflated by the severe class imbalance typical of sparse biological graphs, where non-edges vastly outnumber true edges. To provide a more robust and meaningful evaluation focused on the positive class (true edges), we additionally computed Precision, Recall, and the F1-score. The model achieved a Precision of 0.925, a Recall of 0.997, and an F1-score of 0.960. These metrics confirm that the network accurately reconstructs the essential topological motifs of the binding sites without being misled by graph sparsity.
+Table 1. Edge reconstruction performance comparison and ablation study. 
+Model Type
+Model Name
+Architecture Features
+Dataset
+ROC-AUC
+PR-AUC
+Previous SOTA
+GAT-VAE  REF _Ref221548887 \r \h  \* MERGEFORMAT [1]
+Local Only
+General Set
+0.890
+-
+Baseline
+GAT-VAE (Retrained)a
+Local Only
+Refined Set
+0.941
+0.920
+Ablation Variant
+Graphormer-VAEb
+Global Only
+Refined Set
+0.731
+0.233
+Proposed
+GPS-VAE (Ours)
+Local + Global
+Refined Set
+0.999
+0.989
+a Graphormer-VAE represents the variant using only global attention mechanisms;
+b GAT-VAE represents the variant using only local message passing. 
+Figure 3. Quantitative evaluation on the independent test set. (a) ROC curves; (b) Precision-Recall curves. GPS-VAE demonstrated extremely high edge classification accuracy (AUC &gt; 0.99).
+4.1.2. Topological Consistency of Generated Graphs
+Besides reconstruction capability, generating new pocket structures consistent with biophysical principles is also important in evaluating VAE performance. We randomly sampled 1,000 latent vectors from a prior standard normal distribution for decoding. All generated graphs achieved 100% topological validity. In order to further demonstrate physical plausibility, we compared global topological properties (node count, edge count, average degree, density, clustering coefficient) between generated graphs and real protein pockets. As shown in Figure 4, the generated graphs strongly overlap with real graphs in the distributions of key metrics. The KS test also confirms this consistency (p &gt; 0.05 for all metrics) and indicates that GPS-VAE has learned the intrinsic physical constraints of protein active sites (e.g., residue contact density limits) instead of only memorizing training samples.
+Figure 4. Topological consistency analysis. Comparison of distributions for node count, edge count, and average degree between real pockets (blue) and generated pockets (orange). KS tests indicate no significant differences (p &gt; 0.05).
+4.1.3．Latent Space Manifold and Architectural Advantages
+To further elucidate the architectural advantage of the global self-attention mechanism in GPS-VAE over standard local message passing, we visualized the latent spaces of both our model and the baseline GAT-VAE using UMAP. The active site representations were colored by their geometric scale (number of residues). As shown in Figure 5 (left), the latent space of the standard GAT-VAE exhibits a largely overlapping distribution, where macroscopic geometric traits, such as pocket size, are less distinctly separated. This behavior aligns with the inherent characteristics of standard message-passing neural networks: while they excel at capturing local neighborhood motifs, they may experience 'over-squashing' when compressing global graph topologies, making it challenging to maintain macro-geometric ordering.
+In contrast, the latent space of GPS-VAE (Figure 5, right) is more explicitly disentangled and structured into continuous manifold trajectories. These trajectories exhibit smooth geometric gradients (e.g., transitioning from small to large pockets), demonstrating that the GPS-VAE successfully integrates macroscopic geometric properties into a navigable latent space. This structured topological organization logically supports the superior performance of GPS-VAE, as it provides a more mathematically continuous and geometrically informed starting point for the downstream STONED evolutionary optimization.
+Figure 5. Latent space manifold comparison between the baseline GAT-VAE and our proposed GPS-VAE. Latent embeddings were reduced to 2D using UMAP and colored by the global pocket size (number of residues). (Left) The GAT-VAE baseline produces an entangled manifold where macroscopic structural traits are mixed. (Right) The GPS-VAE organizes the pockets into distinct, continuous trajectories with smooth geometric gradients (from small to large pockets), demonstrating effective macro-geometric learning.
+4.2. Ligand Generation Performance
+4.2.1. Data Efficiency and Generation Metrics
+In order to test model generation performance in low-data resource settings, we trained with 250,000 ChEMBL molecules (about 15% of baseline data). Despite the limited data volume, Transformer-SELFIES achieves high data efficiency and generation quality (Table 2). More importantly, because SELFIES provides syntactic stability, the model achieves 100% chemical validity, totally eliminating the invalid structure problem of SMILES models. Regarding ligand reconstruction, our GPS-VAE yielded an accuracy of 83.0%, compared to 93.2% for the deterministic baseline. First, it should be clarified that the pocket ROC-AUC (which evaluates binary edge prediction) and ligand reconstruction accuracy (which measures exact full-graph matching) represent fundamentally different aspects of performance. Second, the lower exact reconstruction accuracy of our model is not a deficiency, but rather an intentional and well-documented trade-off inherent to Variational Autoencoders (VAEs). By enforcing a continuous and regularized latent space via the KL-divergence term, the VAE inevitably sacrifices a degree of strict memorization (exact reconstruction) in exchange for enhanced generalization and structural interpolation. This continuous manifold is crucial for our framework, as it enables the downstream evolutionary algorithm (STONED) to explore novel, valid molecular structures smoothly. This trade-off ensures that the generated molecules achieve exceptional novelty (99.8%) and uniqueness (97.8%) (see Figure 6), indicating that the Transformer learned the chemical syntax for generating new entities rather than merely memorizing training samples. Ablation experiments also showed that Beam Search (k=5) improves reconstruction accuracy by 5.8% in comparison to greedy search (i.e., better capturing long-range dependencies of complex molecules).
+Table 2. Performance comparison between our method and the baseline model REF _Ref221548887 \r \h  \* MERGEFORMAT [1].
+Metric
+Baseline  REF _Ref221548887 \r \h  \* MERGEFORMAT [1]
+Ours (Transformer-SELFIES)
+Architecture
+RNN (GRU)
+Transformer
+Representation
+SMILES
+SELFIES
+Training Data
+1.6 Million
+0.25 Million (15%)
+Reconstruction
+93.22%
+83.0%
+Validity
+N/Ra
+100.0%
+Novelty
+96.0%
+99.8%
+Uniqueness
+99.0%
+97.8%
+a N/R denotes "Not Reported". Specific validity rates were not reported for baseline models, but SMILES-based generative models typically carry a risk of syntactic invalidity.
+Figure 6. Overview of generative performance metrics.
+4.2.2. Chemical Space Coverage and Latent Manifold
+A robust generative model must capture the physicochemical property distribution of real drug molecules. We compared the Molecular Weight (MW) and LogP distributions of generated molecules against the training set. As shown in Figure 7, the generated data (red) shows high overlap with the training data (blue) in chemical space and is primarily concentrated within the drug-like region defined by Lipinski's Rule of Five. This confirms that the model implicitly learned the physicochemical features of drug molecules without explicit rule constraints.
+Additionally, we examined the smoothness of the latent space via linear interpolation experiments. Figure 8 visualizes the smooth structural transitions along the interpolation path, where all intermediate states are chemically valid structures. This continuous latent space manifold provides an ideal search basis for the subsequent STONED evolutionary algorithm, ensuring the feasibility of local fine-tuning.
+Figure 7. Chemical space coverage distribution. Kernel Density Estimation comparison of training set (blue) and generated set (red) in MW-LogP space, showing high distributional consistency.
+Figure 8. Visualization of latent space linear interpolation. It demonstrates the structural evolution along the interpolation path between two random molecules, validating the smoothness of the learned manifold.
+4.3. Evolutionary Optimization and Final Evaluation
+4.3.1. Physicochemical Property Distribution and Optimization Trajectory
+In order to bridge the gap between deep generative models and real drug discovery, we used a Variational Projection Network to map protein-conditioned latent vectors to chemical space, serving as high-potential seeds for the STONED algorithm. We evaluated the Top-50 candidates selected for the JAK2 and DRD2 targets. As illustrated in Fig. 9, the optimized molecules show good drug-like characteristics. The chemical space distribution (MW vs. LogP) indicates that the candidate molecules are consistently concentrated in the “Safe Zone” under Lipinski's Rule of Five (Ro5). LogP values are concentrated between 2.3 and 4.1, which balances membrane permeability and water solubility. Quantitative results (Fig. 9, bottom right) show that more than 99% of the molecules satisfy all Ro5 criteria (0 violations). The TPSA distribution remains
+below 140 Å², which indicates good oral bioavailability.
+Figure 9. Detailed physicochemical properties for optimized candidate molecules of JAK2 (orange) and DRD2 (blue). (Top left) Chemical space coverage (molecular weight vs. hydrophobicity) shows molecules clustered within Lipinski’s “safe zone” (red dashed box). (Top right) Density distribution of the Quantitative Estimate of Drug-likeness (QED). (Bottom left) TPSA distribution relative to the 140 Å² permeability threshold (red dashed line). (Bottom right) Lipinski's Rule of Five violation statistics, showing &gt;99% compliance (0 violations).
+4.3.2. Comparative Analysis: Overcoming Baseline Limitations
+We compared our method with two competing optimization methods (RL and CMA-ES). As can be seen in Table 3, our approach addresses the following fundamental defects:
+“Reward hacking” (vs. RL): Although RL got a high affinity score on JAK2 (-9.15 kcal/mol), the structures were usually too hydrophobic (LogP = 7.58). Such “high-score but low-druggability” molecules are usually discarded in practical applications because they are not bioavailable. Instead, our method maintained an optimal LogP (2.36) while preserving high activity (-9.01 kcal/mol).
+Convergence (vs. CMA-ES): Pure numerical evolutionary strategies (CMA-ES) struggle to search in discrete chemical spaces and did not perform well on DRD2 (-6.65 kcal/mol).
+Value of Projection Initialization: Ablation results showed that random initialization without GPS-VAE guidance performed badly (-7.44 kcal/mol), which indicates that protein-anchored initial populations may be crucial in locating high-potential regions in the vast chemical space.
+Table 3. Performance comparison of different generation strategies on JAK2 and DRD2 targets.
+Target
+Method
+Affinity (kcal/mol) ↓
+SA Score (1-10) ↓
+QED (0-1) ↑
+LogP (1-5)
+DRD2
+Optimization Baselines
+RL Strategy
+-8.11
+4.72
+0.58
+4.49
+CMA-ES
+-6.65
+5.93
+0.40
+0.08
+Ablation Study
+Random Init (No VAE)
+-7.44
+5.31
+0.42
+2.50
+Ours
+GPS-VAE + STONED
+-9.12
+5.02
+0.68
+4.07
+JAK2
+Optimization Baselines
+RL Strategy
+-9.15
+3.05
+0.40
+7.58
+CMA-ES
+-8.59
+5.26
+0.66
+4.76
+Ablation Study
+Random Init (No VAE)
+-8.75
+4.48
+0.64
+1.67
+Ours
+GPS-VAE + STONED
+-9.01
+4.82
+0.66
+2.36
+4.3.3. Comparison of Predicted Affinities and Scaffold Potential
+To evaluate the structural advantages of the generated molecules, we contextualized their computational docking profiles using FDA-approved drugs as reference benchmarks (Table 4). The generated candidates exhibit highly favorable predicted affinities under the AutoDock Vina scoring function, demonstrating the framework's ability to identify energetically advantageous binding modes. While these computational estimations are highly encouraging, they should naturally be interpreted as preliminary theoretical indicators rather than direct reflections of in vitro efficacy. Additionally, the generated molecules demonstrate excellent ligand efficiency (LE). We recognize that LE intrinsically favors smaller molecules (~230 Da in our generated candidates) compared to fully optimized, larger clinical drugs (300–400 Da). Taking this size disparity into account, this metric is utilized not to assert clinical superiority, but rather to highlight the high atomic efficiency and robust scaffold potential of the generated structures. Collectively, these comparative analyses suggest that the framework successfully provides highly valuable and structurally sound starting points for subsequent lead optimization.
+To ensure the robustness of our computational evaluation and mitigate the potential bias of relying solely on a single scoring function during optimization, we employed an orthogonal rescoring strategy. The Vina-optimized binding poses of the top candidates were rescored using the independent Vinardo empirical scoring function. Statistical analysis revealed a strong positive correlation between the Vina-predicted affinities and the Vinardo scores (Pearson r = 0.826 for JAK2; r = 0.741 for DRD2). This high consistency across distinct scoring algorithms confirms that the energetically favorable binding modes are intrinsic to the generated scaffolds themselves, thereby demonstrating the true effectiveness of the GPS-VAE and STONED optimization framework in discovering high-quality molecular structures.
+Table 4. Benchmarking best generated molecules against FDA-approved drugs.
+Target
+Compound Name
+MW (Da)
+Vina Predicted Affinity (kcal/mol)
+Ligand Efficiency (LE)
+JAK2
+Ours (Best Generated)
+230.4
+-9.01
+0.53
+Ruxolitinib (FDA)
+306.4
+-8.58
+0.37
+Tofacitinib (FDA)
+312.4
+-7.43
+0.32
+Fedratinib (FDA)
+425.6
+-10.72
+0.36
+DRD2
+Ours (Best Generated)
+229.3
+-9.12
+0.54
+Risperidone (FDA)
+410.5
+-11.28
+0.38
+Clozapine (FDA)
+326.8
+-8.65
+0.38
+Quetiapine (FDA)
+411.6
+-8.00
+0.28
+4.3.4. Structural Basis of Binding Affinity
+Visual analysis of the binding modes reveals interesting structural adaptations driven by the evolutionary search (Fig. 10).
+JAK2 (macrocyclization observation): Remarkably, the best candidate for JAK2 spontaneously adopted a macrocyclic topology (Fig. 10a), representing an interesting discovery. Macrocyclization is a highly effective strategy in kinase inhibitor design (e.g., Pacritinib). This structure greatly reduces entropy loss upon binding through conformational pre-organization, which explains its high predicted Ligand Efficiency. However, alternative explanations for this phenomenon may exist, such as training data bias, the dynamics of evolutionary operators, or specific pocket geometry constraints. Therefore, the exact underlying mechanisms require further exploration in future work. Furthermore, a critical evaluation reveals typical challenges associated with AI-generated structures: the high fraction of  carbons, low number of heteroatoms, and highly strained motifs (such as a cyclopropyl group directly attached to a double bond) present practical synthetic challenges. Identifying these characteristics underscores the necessity of integrating stricter synthetic accessibility penalties in future iterations.
+DRD2 (hydrophobic complementarity) and Protein Flexibility: The DRD2 ligand (Fig. 10b) occupies the deep orthosteric pocket with a compact fused-ring system, optimizing hydrophobic contacts with transmembrane helices. This shape complementarity perfectly reproduces the binding properties of Class A GPCR antagonists. However, evaluating these results requires acknowledging the physical boundaries of the current representation. The framework relies on a single static receptor structure. While rigid-receptor approximations are frequently employed and robust for kinases like JAK2, they intrinsically limit the modeling accuracy for highly flexible targets such as G-protein-coupled receptors (e.g., DRD2). Consequently, while the DRD2 results provide a highly valuable baseline demonstrating computational shape complementarity, they should be interpreted with caution as critical induced-fit conformational changes are not represented.
+Figure 10. Predicted binding modes. (a) The JAK2 ligand exhibits a macrocyclic scaffold (orange), reducing the entropic penalty. (b) The DRD2 ligand demonstrates excellent shape complementarity within the hydrophobic pocket.
+5. Conclusion
+In this study, we proposed and tested a geometry-aware generative model combining GPS-VAE with evolutionary strategies to overcome critical constraints in structure-based drug design, such as sparse pocket representation and low molecular validity. The main findings can be summarized as follows:
+High-quality data and an optimized architecture are crucial for model performance. Following the "quality over quantity" principle for dataset construction and introducing a GPS mechanism that combines local and global features, the model achieved significant improvements in pocket reconstruction tasks (demonstrated by robust F1 and PR-AUC scores) and demonstrated its ability to capture the complex physicochemical constraints of active sites.
+The Transformer-SELFIES architecture fundamentally solves the molecular validity bottleneck. We trained the model on a highly restricted dataset (only 15% of the baseline volume), yet it still guaranteed 100% chemical validity along with 99.8% structural novelty. This highlights an exceptionally high data utilization rate and proves the model's ability to thoroughly explore the chemical space.
+Furthermore, we discovered interesting macrocyclic adaptations targeting JAK2, highlighting the algorithm's powerful ability to navigate complex topological spaces. While this demonstrates significant potential, structural analysis reveals typical de novo generation challenges, such as ring strain and limited synthetic feasibility. This suggests that while the algorithm excels at geometrical exploration, it necessitates the integration of more rigorous medicinal chemistry constraints in future iterations to ensure experimental viability.
+Despite these advances, the current framework operates within certain physical boundaries. Notably, the reliance on a single static protein conformation inherently limits modeling accuracy for highly dynamic receptors like the DRD2 GPCR compared to more rigid targets like the JAK2 kinase. Furthermore, our pocket representation currently depends only on canonical amino acids, leaving out critical micro-environment factors like explicit water molecules, metal ions, or cofactors—elements that are indispensable for modeling metalloproteins. To address these challenges, our future work will focus on integrating all-atom dynamic interactions and stricter synthetic accessibility filters, aiming to apply this methodology to much harder clinical targets and further bridge the gap between computational design and practical drug discovery.
+6. References
+Krishnan SR, Bung N, Vangala SR, Srinivasan R, Bulusu G, Roy A (2022) De novo structure-based drug design using deep learning. J Chem Inf Model 62:5100-5109. https://doi.org/10.1021/acs.jcim.1c01319
+Skalic M, Sabando G, De Fabritiis G (2019) Ligand-based de novo drug design with graph generative models. J Chem Inf Model 59:5053–5059. https://doi.org/10.1021/acs.jcim.9b00703 
+Torng W, Altman RB (2019) Graph convolutional neural networks for predicting drug-target interactions. J Chem Inf Model 59:4131–4149. https://doi.org/10.1021/acs.jcim.9b00628
+Weininger D (1988) SMILES, a chemical language and information system. 1. Introduction to methodology and encoding rules. J Chem Inf Comput Sci 28:31–36. https://doi.org/10.1021/ci00057a005
+Krenn M, Häse F, Nigam A, Friederich P, Aspuru-Guzik A (2020) Self-referencing embedded strings (SELFIES): A 100% robust molecular string representation. Mach Learn Sci Technol 1:045024. https://doi.org/10.1088/2632-2153/aba947
+Nigam A, Pollice R, Krenn M, dos Passos Gomes G, Aspuru-Guzik A (2021) Beyond generative models: superfast traversal, optimization, novelty, exploration and discovery (STONED) algorithm for molecule generation. Chem Sci 12:7079–7090. https://doi.org/10.1039/D1SC00154C
+Vaswani A, Shazeer N, Parmar N, Uszkoreit J, Jones L, Gomez AN, Kaiser Ł, Polosukhin I (2017) Attention is all you need. Adv Neural Inf Process Syst 30
+Veličković P, Cucurull G, Casanova A, Romero A, Liò P, Bengio Y (2018) Graph attention networks. Int Conf Learn Represent (ICLR)
+Kingma DP, Welling M (2013) Auto-encoding variational bayes. arXiv preprint arXiv:1312.6114. https://doi.org/10.48550/arXiv.1312.6114
+Ying C, Cai T, Luo S, Zheng S, Ke G, He D, Shen Y, Liu TY (2021) Do transformers really perform bad for graph representation?. Adv Neural Inf Process Syst 34:28877–28888
+Kipf TN, Welling M (2017) Semi-supervised classification with graph convolutional networks. Int Conf Learn Represent (ICLR)
+Olivecrona M, Blaschke T, Engkvist O, Chen H (2017) Molecular de-novo design through deep reinforcement learning. J Cheminform 9:48. https://doi.org/10.1186/s13321-017-0235-x
+Popova M, Isayev O, Tropsha A (2018) Deep reinforcement learning for de novo drug design. Sci Adv 4:eaap7885. https://doi.org/10.1126/sciadv.aap7885
+Hansen N (2016) The CMA evolution strategy: A tutorial. arXiv preprint arXiv: 1604.00772. https://doi.org/10.48550/arXiv.1604.00772
+Schneider G, Fechner U (2005) Computer-based de novo design of drug-like molecules. Nat Rev Drug Discov 4:649–663. https://doi.org/10.1038/nrd1799
+Mendez-Lucio O, Baillif B, Clevert DA, Rouquié D, Joos A (2020) De novo generation of hit-like molecules from gene expression signatures using artificial intelligence. Nat Commun 11:10. https://doi.org/10.1038/s41467-019-13807-w
+Stokes JM, Yang K, Swanson K, Jin W, Cubillos-Ruiz A, Donghia NM, MacNair CR, French S, Carfrae LA, Bloom-Ackermann Z, Tran VM, Chiappino-Pepe A, Badran AH, Andrews IW, Chory EJ, Church GM, Brown ED, Jaakkola TS, Collins JJ (2020) A deep learning approach to antibiotic discovery. Cell 180:688–702. https://doi.org/10.1016/j.cell.2020.01.021
+Gilmer J, Schoenholz SS, Riley PF, Vinyals O, Dahl GE (2017) Neural message passing for quantum chemistry. Int Conf Mach Learn (ICML)
+Wu Z, Pan S, Chen F, Long G, Zhang C, Yu PS (2020) A comprehensive survey on graph neural networks. IEEE Trans Neural Netw Learn Syst 32:4–24. https://doi.org/10.1109/TNNLS.2020.2978386
+Li Y, Tarlow D, Brockschmidt M, Zemel R (2016) Gated graph sequence neural networks. Int Conf Learn Represent (ICLR)
+Xu K, Hu W, Leskovec J, Jegelka S (2019) How powerful are graph neural networks? Int Conf Learn Represent (ICLR)
+Gómez-Bombarelli R, Wei JN, Duvenaud D, Hernández-Lobato JM, Sánchez-Lengeling B, Sheberla D, Aguilera-Iparraguirre J, Hirzel TD, Adams RP, Aspuru-Guzik A (2018) Automatic chemical design using a data-driven continuous representation of molecules. ACS Cent Sci 4:268–276. https://doi.org/10.1021/acscentsci.7b00572
+Blaschke T, Engkvist O, Bajorath J, Chen H (2020) Memory-assisted reinforcement learning for diverse molecular de novo design. J Cheminform 12:68. https://doi.org/10.1186/s13321-020-00473-0
+Jin W, Barzilay R, Jaakkola T (2018) Junction tree variational autoencoder for molecular graph generation. Int Conf Mach Learn (ICML)
+O’Boyle NM, Dalke A (2018) DeepSMILES: An adaptation of SMILES for use in machine-learning of chemical structures. ChemRxiv. https://doi.org/10.26434/chemrxiv.7097960.v1
+Wang R, Fang X, Lu Y, Wang S (2004) The PDBbind database: collection of binding affinities for protein−ligand complexes with known three-dimensional structures. J Med Chem 47:2977–2980. https://doi.org/10.1021/jm030580l
+Desaphy J, Bret G, Rognan D, Kellenberger E (2015) sc-PDB: a 3D-database of ligandable binding sites—10 years on. Nucleic Acids Res 43:D399–D404. https://doi.org/10.1093/nar/gku1056
+Mendez D, Gaulton A, Bento AP, Chambers J, De Veij M, Félix E, Magariños MP, Mosquera JF, Mutowo P, Nowotka M, Radoux CJ, Shotton H, Bosc N, Radcliffe LC, Hersey A, Leach AR (2019) ChEMBL: towards direct deposition of bioassay data. Nucleic Acids Res 47:D930–D940. https://doi.org/10.1093/nar/gky1075
+Berman HM, Westbrook J, Feng Z, Gilliland G, Bhat TN, Weissig H, Shindyalov IN, Bourne PE (2000) The Protein Data Bank. Nucleic Acids Res 28:235–242. https://doi.org/10.1093/nar/28.1.235
+Trott O, Olson AJ (2010) AutoDock Vina: improving the speed and accuracy of docking with a new scoring function, efficient optimization, and multithreading. J Comput Chem 31:455–461. https://doi.org/10.1002/jcc.21334
+O’Boyle NM, Banck M, James CA, Morley C, Vandermeersch T, Hutchison GR (2011) Open Babel: An open chemical toolbox. J Cheminform 3:33. https://doi.org/10.1186/1758-2946-3-33
+Landrum G (2016) RDKit: Open-source cheminformatics. https://www.rdkit.org
+Bickerton GR, Paolini GV, Besnard J, Muresan S, Hopkins AL (2012) Quantifying the chemical beauty of drugs. Nat Chem 4:90–98. https://doi.org/10.1038/nchem.1243
+Ertl P, Schuffenhauer A (2009) Estimation of synthetic accessibility score of drug-like molecules based on molecular complexity and fragment contributions. J Cheminform 1:8. https://doi.org/10.1186/1758-2946-1-8
+Lucet IS, Fantino E, Styles M, Bamert R, Patel O, Broughton SE, Walter M, Burns CJ, Treutlein H, Wilks AF, Rossjohn J (2006) The structural basis of Janus kinase 2 inhibition by a potent and specific pan-Janus kinase inhibitor. Blood 107:176–183. https://doi.org/10.1182/blood-2005-06-2413
+Pardanani A, Harrison C, Cortes JE, Cervantes F, Mesa CE, Milligan D, Masszi T, Mishchenko E, Jourdan E, Vannucchi AM, Passamonti F, Stegelmann F, Schouten HC, Garcia-Gutierrez V, Besses C, Cazzola M, Baccarani M, Chuah C, Spitofsky N, Zhao W, Dong H, McMullin MF, Hochhaus A, Tefferi A (2015) Safety and efficacy of fedratinib in patients with primary or secondary myelofibrosis: a randomized clinical trial. JAMA Oncol 1:643–651. https://doi.org/10.1001/jamaoncol.2015.1590
+Lombardo LJ, Lee FY, Chen P, Norris D, Barrish JC, Behnia K, Castaneda S, Cornelius LA, Das J, Doweyko AM, Fairchild C, Hunt JT, Inigo I, Johnston K, Kamath A, Kan D, Klei H, Marathe P, Pang S, Peterson R, Pitt S, Schieven GL, Schmidt RJ, Tokarski J, Wen ML, Wityak J, Borzilleri RM (2004) Discovery of N-(2-chloro-6-methyl-phenyl)-2-(6-(4-(2-hydroxyethyl)-piperazin-1-yl)-2-methyl-pyrimidin-4-ylamino)-thiazole-5-carboxamide (BMS-354825), a dual Src/Abl kinase inhibitor with potent antitumor activity in preclinical assays. J Med Chem 47:6658–6661. https://doi.org/10.1021/jm049486a
+Wang S, Che T, Levit A, Shoichet BK, Wacker D, Roth BL (2018) Structure of the D2 dopamine receptor bound to the atypical antipsychotic drug risperidone. Nature 555:269–273. https://doi.org/10.1038/nature25758
+Meltzer HY (2013) Update on typical and atypical antipsychotic drugs. Annu Rev Med 64:393–406. https://doi.org/10.1146/annurev-med-050911-161504
+Chien EYT, Liu W, Zhao Q, Katritch V, Han GW, Savage MA, Hanson MA, Bernschneider V, Gati C, Fenalti G, Cherezov V, Stevens RC (2010) Structure of the human dopamine D3 receptor in complex with a D2/D3 selective antagonist. Science 330:1091–1095. https://doi.org/10.1126/science.1197410
+De Cao N, Kipf T (2018) MolGAN: An implicit generative model for small molecular graphs. arXiv preprint arXiv:1805. 11973. https://doi.org/10.48550/arXiv.1805.11973
+Segler MH, Kogej T, Tyrchan C, Waller MP (2018) Generating focused molecule libraries for drug discovery with recurrent neural networks. ACS Cent Sci 4:120–131. https://doi.org/10.1021/acscentsci.7b00512
+Guimaraes GL, Sanchez-Lengeling B, Outeiral C, Farias PLC, Aspuru-Guzik A (2017) Objective-reinforced generative adversarial networks (ORGAN) for sequence generation models. arXiv preprint arXiv:1705.10843. https://doi.org/10.48550/arXiv.1705.10843
+Jumper J, Evans R, Pritzel A, Green T, Figurnov M, Ronneberger O, Tunyasuvunakool K, Bates R, Žídek A, Potapenko A, Bridgland A, Meyer C, Kohl SAA, Ballard AJ, Cowie A, Romera-Paredes B, Nikolov S, Jain R, Adler J, Back T, Petersen S, Reiman D, Clancy E, Zielinski M, Steinegger M, Pacholska M, Berghammer T, Bodenstein S, Silver D, Vinyals O, Senior AW, Kavukcuoglu K, Kohli P, Hassabis D (2021) Highly accurate protein structure prediction with AlphaFold. Nature 596:583–589. https://doi.org/10.1038/s41586-021-03819-2
+Baell JB, Holloway GA (2010) New substructure filters for removal of pan assay interference compounds (PAINS) from screening libraries and for their exclusion in bioassays. J Med Chem 53:2719–2740. https://doi.org/10.1021/jm901137j
+Rampášek L, Galkin M, Dwivedi VP, Luu AT, Wolf G, Beaini D (2022) Recipe for a general, powerful, scalable graph transformer. Adv Neural Inf Process Syst 35:14501–14515
+Statements and Declarations
+Funding 
+This work was supported by the Liaoning Province Nature Fund Project (Grant No. 2022-MS-291); the National foreign expert project plan (Grant No. G2022006008L); and the Scientific research project of Liaoning Province Education Department (Grant No. LJKMZ20220781, LJKMZ20220783).
+Competing Interests 
+The authors have no relevant financial or non-financial interests to disclose.
+Author Contributions 
+All authors contributed to the study conception and design. H.A. contributed to the optimization of the multimodal alignment strategy and the loss function. Material preparation, software implementation, data collection, and analysis were performed by Y.S. The first draft of the manuscript was written by Y.S., and S.H. and J. W. commented on previous versions of the manuscript. All authors read and approved the final manuscript.
+Data Availability 
+The datasets generated and analyzed during the current study, including the full lists of generated ligand structures for the JAK2 and DRD2 targets, as well as the complete source code for the generative framework and evolutionary optimization pipeline, are freely available in the public GitHub repository at https://github.com/gujun770/Design. Any additional data, detailed protocols, or materials required to reproduce the findings are available from the corresponding author upon reasonable request.

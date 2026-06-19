@@ -1,0 +1,4 @@
+finding,summary
+hybrid_random_auroc,"Hybrid random-split AUROC mean is 0.845 with bootstrap 95% CI [0.805, 0.885]."
+hybrid_source_auroc,"Hybrid source-split AUROC mean is 0.625 with bootstrap 95% CI [0.584, 0.666]."
+hybrid_random_r2,"Hybrid random-split R2 mean is 0.389 with bootstrap 95% CI [0.306, 0.472]."

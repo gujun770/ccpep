@@ -1,0 +1,8 @@
+comparison,metric,summary
+optimized_shortlist_vs_de_novo_shortlist,quality_score,"optimized_shortlist is higher than de_novo_shortlist on quality_score (delta=0.294, 95% CI [0.282, 0.307], p=0.0002)."
+optimized_shortlist_vs_de_novo_shortlist,local_diversity,"optimized_shortlist is higher than de_novo_shortlist on local_diversity (delta=0.295, 95% CI [0.278, 0.312], p=0.0002)."
+optimized_shortlist_vs_de_novo_shortlist,predicted_permeability,"optimized_shortlist is higher than de_novo_shortlist on predicted_permeability (delta=0.214, 95% CI [0.132, 0.293], p=0.0005)."
+optimized_shortlist_vs_de_novo_shortlist,predicted_positive_prob,"optimized_shortlist is lower than de_novo_shortlist on predicted_positive_prob (delta=-0.002, 95% CI [-0.012, 0.006], p=0.6226)."
+optimized_shortlist_vs_de_novo_shortlist,n_methyl_ratio,"optimized_shortlist is lower than de_novo_shortlist on n_methyl_ratio (delta=-0.174, 95% CI [-0.333, -0.014], p=0.0095)."
+optimized_shortlist_vs_de_novo_shortlist,natural_ratio,"optimized_shortlist is higher than de_novo_shortlist on natural_ratio (delta=0.215, 95% CI [0.139, 0.285], p=0.0002)."
+optimized_shortlist_vs_de_novo_shortlist,d_ratio,"optimized_shortlist is higher than de_novo_shortlist on d_ratio (delta=0.090, 95% CI [-0.014, 0.188], p=0.0368)."

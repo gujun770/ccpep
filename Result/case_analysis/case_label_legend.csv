@@ -1,0 +1,5 @@
+label,route,candidate_short,parent_short,reference_short,mutation_description
+D1,de_novo,meA.meL.meL.P.meL.F,D1,meA.Me_dL.meL.P.Me_dL.F,P.meL.meL.P.meL.F
+D2,de_novo,Me_dA.Nle.meL.P.meL.F,D2,meA.L.Me_dL.P.Me_dL.F,Pr_Gly.Nle.meL.P.meL.F
+O3,optimized,Me_dV.meL.meL.meA.F.P,Me_dV.dF.meL.dP.F.P,meA.Me_dL.meL.P.Me_dL.F,1:dF->meL;3:dP->meA
+O4,optimized,Me_dV.meL.meL.Me_dA.F.P,Me_dV.dF.meL.dP.F.P,meA.Me_dL.meL.P.Me_dL.F,1:dF->meL;3:dP->Me_dA

@@ -1,0 +1,8 @@
+section,finding
+prediction,Hybrid predictor reaches the strongest random-split classification AUROC and retains measurable source-aware performance under harder generalization.
+generation,"Both optimized and de novo shortlists are fully novel relative to training peptides, while the de novo route reaches diversity close to the top training reference set."
+generator_ablation,Multi-objective generator ablations reveal clear quality-diversity-composition tradeoffs rather than a trivial one-metric optimum.
+mechanism,"Optimized and de novo routes shift descriptor profiles differently, with both moving toward permeability-favorable physicochemical regions."
+proxy_validation,"Candidates map to neighborhoods of high-permeability peptides under public 3D polarity proxy descriptors, supporting physical plausibility without requiring private MD trajectories."
+source_heterogeneity,"Leave-one-source-out analysis reveals substantial source-level heterogeneity, and this variability is only weakly related to source sample size."
+novelty_depth,"Deep novelty analysis shows that optimized candidates remain close to known high-permeability templates, whereas de novo candidates move farther in token and descriptor space while staying within permeability-favorable neighborhoods."

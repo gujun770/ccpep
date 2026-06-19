@@ -1,0 +1,3 @@
+split,n,positive_rate,mean_predicted_prob,brier_score,ece
+random,434,0.687,0.627,0.146,0.08
+source,1105,0.776,0.708,0.176,0.086

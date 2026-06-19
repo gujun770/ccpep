@@ -1,0 +1,4 @@
+finding,summary
+source_heterogeneity,"Strict LOSO source-level AUROC spans from 0.167 to 1.000, with weighted mean 0.737, indicating substantial source heterogeneity."
+sample_size_relation,"Spearman correlation between log source size and AUROC is -0.234, suggesting that source difficulty is not explained by sample size alone."
+variance_relation,Spearman correlation between source permeability variance and AUROC is 0.204.

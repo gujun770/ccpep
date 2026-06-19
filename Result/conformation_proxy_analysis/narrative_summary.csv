@@ -1,0 +1,5 @@
+finding,summary
+solvent_gap,"Top-100 training peptides show mean solvent 3DPSA gap -0.180, compared with -0.393 for the overall training pool."
+optimized_overlap,"{'finding': 'optimized_overlap', 'summary': 'No optimized shortlist peptide matched public 3D proxy records.'}"
+denovo_overlap,"{'finding': 'denovo_overlap', 'summary': 'No de novo shortlist peptide matched public 3D proxy records.'}"
+neighbor_proxy_context,"Nearest high-permeability neighbors for optimized candidates show mean solvent 3DPSA gap 3.808, while de novo neighbors show 2.694."

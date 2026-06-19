@@ -1,0 +1,3 @@
+route,count,mean_nearest_train_token_jaccard,median_nearest_train_token_jaccard,max_nearest_train_token_jaccard,mean_nearest_descriptor_distance,median_nearest_descriptor_distance,min_nearest_descriptor_distance
+de_novo_shortlist,24,0.7738095238095237,0.8,1.0,0.6888815378007224,0.1676092024905128,2.3221980631040627e-16
+optimized_shortlist,12,0.927777777777778,1.0,1.0,0.2883147025752233,5.340478267250078e-15,2.423651445728339e-16

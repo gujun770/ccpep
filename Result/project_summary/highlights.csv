@@ -1,0 +1,6 @@
+section,finding
+random_split_prediction,Best random-split AUROC is 0.846 from Hybrid predictor.
+group_cv_prediction,Best repeated group-CV descriptor model is random_forest with AUROC 0.725.
+optimized_shortlist,"optimized_shortlist contains 12 candidates with novelty 1.00, uniqueness 1.00, and mean predicted permeability -4.511."
+de_novo_shortlist,"de_novo_shortlist contains 24 candidates with novelty 1.00, uniqueness 1.00, and mean predicted permeability -4.725."
+validation_candidates,Unified validation set contains 20 top candidates from optimized and de novo routes.
